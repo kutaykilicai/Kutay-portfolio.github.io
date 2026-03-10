@@ -1,1378 +1,429 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kutay Kılıç - Portfolio</title>
+    <meta name="description" content="Kutay Kılıç - İç Kontrol & BT Denetim Uzmanı, Yapay Zeka Yazılım Geliştirici, Elektrik ve Elektronik Mühendisi">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Modern Loading Animation */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: all 0.8s ease;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .spinner::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 4px solid rgba(0, 210, 255, 0.2);
-            border-radius: 50%;
-            animation: pulse-ring 1.5s ease-out infinite;
-        }
-
-        .spinner::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 4px solid transparent;
-            border-top: 4px solid #00d2ff;
-            border-right: 4px solid #3a7bd5;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .loading-text {
-            color: #00d2ff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            animation: text-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; }
-        }
-
-        @keyframes text-glow {
-            from { text-shadow: 0 0 10px #00d2ff; opacity: 0.8; }
-            to { text-shadow: 0 0 20px #00d2ff, 0 0 30px #3a7bd5; opacity: 1; }
-        }
-
-        /* Smooth Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-            z-index: 9999;
-            transition: width 0.3s ease;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, #00d2ff 1px, transparent 1px);
-            background-size: 100px 100px;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        /* Header */
-        header {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
-            overflow: hidden;
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5, #00d2ff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
-            margin-bottom: 2rem;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: #e0e0e0;
-            margin-bottom: 0.8rem;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
-        .hero-subtitle .role {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            margin: 0.2rem;
-            background: linear-gradient(45deg, rgba(0, 210, 255, 0.1), rgba(58, 123, 213, 0.1));
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 25px;
-            color: #00d2ff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .hero-subtitle .role:hover {
-            background: linear-gradient(45deg, rgba(0, 210, 255, 0.2), rgba(58, 123, 213, 0.2));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Modern Button Effects */
-        .modern-button {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .modern-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .modern-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
-            margin-top: 1rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.4);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-        }
-
-        /* Sections */
-        .section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #00d2ff, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
-        }
-
-        .skill-category h3 {
-            color: #00d2ff;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 8px 0;
-            color: #e0e0e0;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .skill-list li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: #00d2ff;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 1.5rem;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(to bottom, #00d2ff, #3a7bd5);
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            border-left: 4px solid #00d2ff;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -3.5rem;
-            top: 2rem;
-            width: 15px;
-            height: 15px;
-            background: #00d2ff;
-            border-radius: 50%;
-            border: 3px solid #1a1a2e;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .exp-title {
-            color: #00d2ff;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .exp-company {
-            color: #ffffff;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        .exp-date {
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-
-        .exp-description {
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-
-        .exp-achievements {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .exp-achievements li {
-            padding: 5px 0;
-            color: #e0e0e0;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .exp-achievements li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #00d2ff;
-            font-weight: bold;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Advanced Card Hover Effects */
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
-            transition: left 0.8s ease;
-            z-index: 1;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-title {
-            color: #00d2ff;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Enhanced Badge Animations */
-        .project-badge {
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            animation: badge-float 3s ease-in-out infinite;
-        }
-
-        @keyframes badge-float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(1deg); }
-        }
-
-        .project-description {
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Enhanced Tech Tags */
-        .tech-tag {
-            background: rgba(0, 210, 255, 0.2);
-            color: #00d2ff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            transform: translateY(-2px);
-            background: rgba(0, 210, 255, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Certifications Section */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .cert-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border-left: 4px solid #00d2ff;
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .cert-title {
-            color: #00d2ff;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-org {
-            color: #e0e0e0;
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            color: #00d2ff;
-            margin-bottom: 1rem;
-            transition: transform 0.6s ease;
-        }
-
-        .contact-info {
-            color: #e0e0e0;
-        }
-
-        .contact-link {
-            color: #00d2ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: #ffffff;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0, 0, 0, 0.8);
-            color: #a0a0a0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-subtitle .role {
-                font-size: 0.9rem;
-                padding: 0.2rem 0.8rem;
-                margin: 0.1rem;
-            }
-            
-            .about-text {
-                padding: 2rem;
-            }
-            
-            .exp-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            nav {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin: 20px auto;
-                width: fit-content;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <div class="loading-text">Portfolyo Yükleniyor...</div>
+<body id="home">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">Kutay Kılıç</span>
+        </div>
     </div>
 
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <div class="bg-animation"></div>
+    <!-- Aurora Background Blobs -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Ana Sayfa</a></li>
-            <li><a href="#about">Hakkımda</a></li>
-            <li><a href="#skills">Yetenekler</a></li>
-            <li><a href="#experience">Deneyim</a></li>
-            <li><a href="#projects">Projeler</a></li>
-            <li><a href="#contact">İletişim</a></li>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+            <li><a href="#about" class="nav-link">Hakkımda</a></li>
+            <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+            <li><a href="#experience" class="nav-link">Deneyim</a></li>
+            <li><a href="#projects" class="nav-link">Projeler</a></li>
+            <li><a href="#contact" class="nav-link">İletişim</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
-    <header id="home">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1 class="hero-title">KUTAY KILIÇ</h1>
-            <div class="hero-subtitle">
-                <span class="role">ELEKTRİK VE ELEKTRONİK MÜHENDİSİ</span>
-                <span class="role">AI DESTEKLİ YAZILIM GELİŞTİRİCİ</span>
-                <span class="role">GÜÇ ELEKTRONİĞİ UZMANI</span>
+            <div class="hero-left">
+                <div class="hero-quote reveal">
+                    <i class="fas fa-bolt"></i>
+                    <span>"Mühendislik bilgimi yazılımla birleştiriyorum"</span>
+                </div>
+                <h1 class="hero-title reveal">
+                    Merhaba, Ben<br>
+                    <span class="hero-name">Kutay Kılıç</span>
+                </h1>
+                <p class="hero-desc reveal">
+                    3+ yıllık BT denetimi, iç kontrol ve siber güvenlik deneyimine sahip İç Kontrol & BT Denetim Uzmanı. Yapay zeka destekli yazılım geliştirici ve Elektrik-Elektronik Mühendisi.
+                </p>
+                <div class="hero-buttons reveal">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Projeleri Keşfet</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> İletişim</a>
+                </div>
             </div>
-            <a href="#about" class="cta-button modern-button">
-                <i class="fas fa-rocket"></i> Keşfet
-            </a>
+            <div class="hero-right reveal">
+                <div class="profile-card">
+                    <div class="profile-card-glow"></div>
+                    <div class="profile-card-inner">
+                        <h2 class="profile-card-name">Kutay Kılıç</h2>
+                        <p class="profile-card-title">İç Kontrol & BT Denetim Uzmanı</p>
+                        <div class="profile-card-image">
+                            <img src="profile.jpg" alt="Kutay Kılıç">
+                        </div>
+                        <div class="profile-card-footer">
+                            <div class="profile-status">
+                                <img src="profile.jpg" alt="" class="profile-mini-avatar">
+                                <div>
+                                    <span class="profile-username">@kutaykilic</span>
+                                    <span class="profile-online"><span class="online-dot"></span> Online</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn-contact-me">İletişim</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="11">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Proje Tamamlandı</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Yıl Denetim Deneyimi</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="45">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Sertifika</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Uzmanlık Alanı</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
     <section id="about" class="section">
-        <h2 class="section-title">Hakkımda</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Güç elektroniği ve yazılım geliştirme alanlarında uzmanlaşmış Elektrik ve Elektronik Mühendisi. Güç elektroniği laboratuvarında SPWM teknikleri, inverter kontrolleri ve sürücü devreleri üzerinde deneyimli.</p>
-                
-                <p>Python ile otomasyon çözümleri geliştiren, analitik düşünce yapısına sahip mühendis. IT denetimi ve siber güvenlik alanında da profesyonel deneyime sahip. Sürekli öğrenme odaklı yaklaşımı ile teknolojik gelişmeleri takip eden ve yenilikçi çözümler üreten bir profesyonel.</p>
-                
-                <p>Yapay zeka destekli projeler geliştirerek, mühendislik bilgimi yazılım teknolojileriyle birleştiriyorum.</p>
+        <div class="container">
+            <h2 class="section-title reveal">Hakkımda</h2>
+            <div class="about-content reveal">
+                <div class="about-glass">
+                    <p>3+ yıllık BT denetimi, iç kontrol ve siber güvenlik deneyimine sahip sonuç odaklı İç Kontrol & BT Denetim Uzmanı. IT Genel Kontrolleri (ITGC), BDDK mevzuat uyumluluğu ve risk değerlendirme süreçlerinde Big 4 ve bankacılık sektöründe kapsamlı deneyim.</p>
+                    <p>Crybo'da kripto varlık operasyonlarına yönelik BT iç denetim süreçlerini yönetmekte; Big 4 dış denetimleriyle koordinasyonu sağlamaktadır. AlternatifBank'ta Big 4 dış denetim süreçlerine aktif katılım sağlamıştır.</p>
+                    <p>ChatGPT, Claude, Gemini, Mistral, LLaMA dahil tüm önde gelen LLM'lerle üretim ortamı deneyimine sahip AI geliştirici. Python ile denetim raporlama süreçlerinde ~%40 verimlilik artışı sağlamıştır.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="section">
-        <h2 class="section-title">Teknik Yetenekler</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Yazılım Geliştirme</h3>
-                <ul class="skill-list">
-                    <li>Python (İleri)</li>
-                    <li>C++ (Orta)</li>
-                    <li>JavaScript/HTML/CSS</li>
-                    <li>React & Node.js</li>
-                    <li>API Geliştirme</li>
-                    <li>Otomasyon Scriptleri</li>
-                    <li>Dosya Yönetimi</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-robot"></i> AI & Geliştirme Araçları</h3>
-                <ul class="skill-list">
-                    <li>Google Gemini API</li>
-                    <li>Claude AI</li>
-                    <li>VS Code & Cursor</li>
-                    <li>N8N Workflow</li>
-                    <li>Speech Recognition</li>
-                    <li>Natural Language Processing</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-bolt"></i> Güç Elektroniği</h3>
-                <ul class="skill-list">
-                    <li>SPWM Teknikleri</li>
-                    <li>İnverter Kontrolleri</li>
-                    <li>MOSFET & IGBT Sürücüler</li>
-                    <li>Üç Fazlı Doğrutucu Devreleri</li>
-                    <li>PWM Kontrol Sistemleri</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-shield-alt"></i> IT & Güvenlik</h3>
-                <ul class="skill-list">
-                    <li>COBIT, ISO 27001, NIST</li>
-                    <li>Nessus, Burp Suite</li>
-                    <li>AWS, Azure</li>
-                    <li>Siber Güvenlik Denetimi</li>
-                    <li>Penetrasyon Testleri</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-microchip"></i> Gömülü Sistemler</h3>
-                <ul class="skill-list">
-                    <li>ESP32/Arduino</li>
-                    <li>Mikrodenetleyici Programlama</li>
-                    <li>IoT Sistemleri</li>
-                    <li>Sensor Entegrasyonu</li>
-                    <li>WebSocket Protokolleri</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Ölçüm & Test Cihazları</h3>
-                <ul class="skill-list">
-                    <li>Tektronix Osiloskop</li>
-                    <li>PWM Jeneratörleri</li>
-                    <li>Güç Kaynakları</li>
-                    <li>Yük Test Üniteleri</li>
-                    <li>Multimetreler</li>
-                </ul>
+        <div class="container">
+            <h2 class="section-title reveal">Araçlar & Teknolojiler</h2>
+            <p class="section-subtitle reveal">Profesyonel Yeteneklerim</p>
+            <div class="skills-grid">
+                <div class="skill-card reveal" data-delay="0"><div class="skill-icon"><i class="fab fa-python"></i></div><span class="skill-name">Python</span><span class="skill-cat">İleri Seviye</span></div>
+                <div class="skill-card reveal" data-delay="1"><div class="skill-icon"><i class="fas fa-microchip"></i></div><span class="skill-name">C++</span><span class="skill-cat">Orta Seviye</span></div>
+                <div class="skill-card reveal" data-delay="2"><div class="skill-icon"><i class="fab fa-js-square"></i></div><span class="skill-name">JavaScript</span><span class="skill-cat">Dil</span></div>
+                <div class="skill-card reveal" data-delay="3"><div class="skill-icon"><i class="fab fa-react"></i></div><span class="skill-name">React</span><span class="skill-cat">Framework</span></div>
+                <div class="skill-card reveal" data-delay="4"><div class="skill-icon"><i class="fab fa-node-js"></i></div><span class="skill-name">Node.js</span><span class="skill-cat">Runtime</span></div>
+                <div class="skill-card reveal" data-delay="5"><div class="skill-icon"><i class="fab fa-html5"></i></div><span class="skill-name">HTML/CSS</span><span class="skill-cat">Dil</span></div>
+                <div class="skill-card reveal" data-delay="6"><div class="skill-icon"><i class="fas fa-robot"></i></div><span class="skill-name">Gemini API</span><span class="skill-cat">AI</span></div>
+                <div class="skill-card reveal" data-delay="7"><div class="skill-icon"><i class="fas fa-brain"></i></div><span class="skill-name">Claude AI</span><span class="skill-cat">AI</span></div>
+                <div class="skill-card reveal" data-delay="8"><div class="skill-icon"><i class="fas fa-bolt"></i></div><span class="skill-name">SPWM</span><span class="skill-cat">Güç Elektroniği</span></div>
+                <div class="skill-card reveal" data-delay="9"><div class="skill-icon"><i class="fas fa-car-battery"></i></div><span class="skill-name">İnverter</span><span class="skill-cat">Güç Elektroniği</span></div>
+                <div class="skill-card reveal" data-delay="10"><div class="skill-icon"><i class="fas fa-shield-alt"></i></div><span class="skill-name">Siber Güvenlik</span><span class="skill-cat">IT Güvenlik</span></div>
+                <div class="skill-card reveal" data-delay="11"><div class="skill-icon"><i class="fab fa-aws"></i></div><span class="skill-name">AWS / Azure</span><span class="skill-cat">Cloud</span></div>
+                <div class="skill-card reveal" data-delay="12"><div class="skill-icon"><i class="fas fa-microchip"></i></div><span class="skill-name">ESP32</span><span class="skill-cat">IoT</span></div>
+                <div class="skill-card reveal" data-delay="13"><div class="skill-icon"><i class="fas fa-project-diagram"></i></div><span class="skill-name">N8N</span><span class="skill-cat">Workflow</span></div>
+                <div class="skill-card reveal" data-delay="14"><div class="skill-icon"><i class="fas fa-code"></i></div><span class="skill-name">VS Code</span><span class="skill-cat">Editör</span></div>
+                <div class="skill-card reveal" data-delay="15"><div class="skill-icon"><i class="fas fa-wave-square"></i></div><span class="skill-name">Osiloskop</span><span class="skill-cat">Test Cihazı</span></div>
             </div>
         </div>
     </section>
 
+    <!-- Experience Section -->
     <section id="experience" class="section">
-        <h2 class="section-title">Profesyonel Deneyim</h2>
-        <div class="experience-timeline">
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <div class="exp-title">IT Denetçisi Deneyimli Asistan</div>
-                        <div class="exp-company">KPMG Türkiye</div>
+        <div class="container">
+            <h2 class="section-title reveal">Profesyonel Deneyim</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>İç Kontrol Uzmanı – BT / Bilgi Sistemleri</h3><p class="timeline-company">Crybo Kripto Varlık Alım Satım Platformu A.Ş.</p></div>
+                            <span class="timeline-date">12/2025 - Devam</span>
+                        </div>
+                        <p class="timeline-desc">Kripto varlık ticaret operasyonlarına yönelik BT iç denetim ve iç kontrol süreçlerini yönetme.</p>
+                        <ul class="timeline-achievements">
+                            <li>Erişim yönetimi, değişiklik yönetimi ve BT operasyonları kontrollerini kapsayan ITGC değerlendirmeleri</li>
+                            <li>Süreç ve uygulama kontrol alanlarındaki kontrol eksikliklerini tespit etme ve iyileştirme</li>
+                            <li>Big 4 dış denetimleriyle koordinasyon; denetim bulguları ve iyileştirme planlarını hazırlama ve sunma</li>
+                        </ul>
                     </div>
-                    <div class="exp-date">07/2022 - 06/2025</div>
                 </div>
-                <div class="exp-description">
-                    <p>Büyük bankalar ve finans kurumları için IT denetimleri gerçekleştirme ve siber güvenlik değerlendirmeleri yapma.</p>
-                </div>
-                <ul class="exp-achievements">
-                    <li>ISO 27001, COBIT ve NIST çerçevelerine uygun düzenleyici gerekliliklere uyum sağlama</li>
-                    <li>Nessus, Burp Suite ve Wireshark kullanarak sızma testleri ve siber güvenlik değerlendirmeleri</li>
-                    <li>AWS ve Azure bulut güvenliği politikalarını analiz etme ve risk azaltma stratejileri uygulama</li>
-                    <li>BT yönetişim değerlendirmeleri ve uyumluluk denetimleri gerçekleştirme</li>
-                    <li>Python ile güvenlik raporlama sistemleri geliştirme</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <div class="exp-title">Yazılım Teknolojileri Stajyeri</div>
-                        <div class="exp-company">Ribon Software Technologies</div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>BT Kontrol ve Veri Analitiği Birimi – Yönetmen Yardımcısı</h3><p class="timeline-company">AlternatifBank</p></div>
+                            <span class="timeline-date">10/2025 - 12/2025</span>
+                        </div>
+                        <p class="timeline-desc">BDDK ve ilgili mevzuatlar kapsamında periyodik BT sistem ve süreç uyumluluk denetimleri.</p>
+                        <ul class="timeline-achievements">
+                            <li>Big 4 dış denetim süreçlerine aktif katılım; denetim ekipleri ve iş birimleri arasında koordinasyon</li>
+                            <li>Kurumsal uygulamalar için risk değerlendirmesi; kontrol mekanizması yaşam döngüsü yönetimi</li>
+                            <li>Python otomasyon scriptleri ile denetim raporlama sürecinde ~%40 verimlilik artışı sağlama</li>
+                        </ul>
                     </div>
-                    <div class="exp-date">03/2022 - 07/2022</div>
                 </div>
-                <div class="exp-description">
-                    <p>Yazılım geliştirme süreçlerine aktif katılım ve otomasyon çözümleri geliştirme.</p>
-                </div>
-                <ul class="exp-achievements">
-                    <li>Siber güvenlik otomasyon betikleri geliştirme ve sistem izleme araçları oluşturma</li>
-                    <li>Kurumsal uygulamalar için risk değerlendirme süreçlerine aktif katkı</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <div class="exp-title">Tasarım Mühendisliği Ofisi Stajyeri</div>
-                        <div class="exp-company">Tersan Tersanesi</div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>IT Denetçisi Deneyimli Asistan</h3><p class="timeline-company">KPMG Türkiye</p></div>
+                            <span class="timeline-date">07/2022 - 06/2025</span>
+                        </div>
+                        <p class="timeline-desc">10+ önde gelen banka ve finans kurumu için ITGC denetimleri gerçekleştirme.</p>
+                        <ul class="timeline-achievements">
+                            <li>Kurumsal müşteriler için ISO 27001, COBIT ve NIST çerçeveleri uyumluluğunu değerlendirme</li>
+                            <li>Nessus ve Burp Suite kullanarak sızma testleri ve zafiyet değerlendirmeleri yapma</li>
+                            <li>AWS ve Azure bulut güvenliği politikalarını inceleme; risk azaltma stratejileri uygulama</li>
+                            <li>BT yönetişim değerlendirmeleri ve düzenleyici uyumluluk denetimleri</li>
+                        </ul>
                     </div>
-                    <div class="exp-date">2022</div>
                 </div>
-                <div class="exp-description">
-                    <p>Gemi otomasyon sistemleri ve endüstriyel otomasyon projelerinde teknik destek.</p>
-                </div>
-                <ul class="exp-achievements">
-                    <li>Gemi otomasyon sistemleri için elektronik kontrol sistemleri tasarımı ve geliştirilmesi</li>
-                    <li>Endüstriyel otomasyon projelerinde teknik destek sağlama</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <div class="exp-title">Elektronik Mühendisi</div>
-                        <div class="exp-company">AnelGroup - AnelSis Ltd.</div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Yazılım Teknolojileri Stajyeri</h3><p class="timeline-company">Ribon Software Technologies</p></div>
+                            <span class="timeline-date">03/2022 - 07/2022</span>
+                        </div>
+                        <p class="timeline-desc">Siber güvenlik otomasyon araçları ve sistem zafiyet tarama uygulamaları geliştirme.</p>
+                        <ul class="timeline-achievements">
+                            <li>Kurumsal veri toplama boru hatları için web kazıma araçları geliştirme</li>
+                            <li>Python tabanlı güvenlik raporlama sistemleri mühendisliği</li>
+                        </ul>
                     </div>
-                    <div class="exp-date">2016</div>
                 </div>
-                <div class="exp-description">
-                    <p>Endüstriyel otomasyon için elektronik devre tasarımı ve performans testleri.</p>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Tasarım Mühendisliği Stajyeri</h3><p class="timeline-company">Tersan Tersanesi</p></div>
+                            <span class="timeline-date">2022</span>
+                        </div>
+                        <p class="timeline-desc">Gemi otomasyon projeleri için elektronik kontrol sistemleri tasarımı ve geliştirmesi.</p>
+                        <ul class="timeline-achievements">
+                            <li>Gemi otomasyon projeleri için elektronik kontrol sistemleri tasarımı</li>
+                            <li>Endüstriyel otomasyon uygulamaları için teknik çizim ve şematik üretimi</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="exp-achievements">
-                    <li>Endüstriyel otomasyon için elektronik devre tasarımı ve performans testleri</li>
-                    <li>Elektronik bileşenler için arıza tespiti, bakım ve onarım çalışmaları</li>
-                </ul>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Elektronik Mühendisliği Stajyeri</h3><p class="timeline-company">AnelGroup – AnelSis Ltd.</p></div>
+                            <span class="timeline-date">2016</span>
+                        </div>
+                        <p class="timeline-desc">Endüstriyel otomasyon için elektronik devre tasarımı ve performans testleri.</p>
+                        <ul class="timeline-achievements">
+                            <li>Endüstriyel otomasyon için elektronik devre tasarımı ve performans testleri</li>
+                            <li>Elektronik bileşenler için arıza analizi, bakım ve onarım</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="section">
-        <h2 class="section-title">Projeler</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1HdVoQtlBhqPQ1XQ7oyK9jcI3pV3U8Hsv" alt="J.A.R.V.I.S AI Assistant" class="project-image">
-                <span class="project-badge">AI-Powered</span>
-                <div class="project-content">
-                    <h3 class="project-title">J.A.R.V.I.S AI Asistan</h3>
-                    <p class="project-description">
-                        Google Gemini Pro API entegrasyonlu sesli AI asistan sistemi. Speech Recognition ve Text-to-Speech teknolojileri ile doğal etkileşim sağlayan, sistem kontrolü ve uygulama yönetimi özellikleri bulunan gelişmiş AI asistan.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Google Gemini API</span>
-                        <span class="tech-tag">Speech Recognition</span>
-                        <span class="tech-tag">TTS</span>
+        <div class="container">
+            <h2 class="section-title reveal">Projeler</h2>
+            <p class="section-subtitle reveal">Becerilerimi, yaratıcılığımı ve anlamlı dijital deneyimler oluşturma tutkumu yansıtan projelerim.</p>
+            <div class="projects-grid">
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/jarvis.jpg" alt="J.A.R.V.I.S AI"><span class="project-badge">AI-Powered</span></div>
+                    <div class="project-card-body">
+                        <h3>J.A.R.V.I.S AI Asistan</h3>
+                        <p>Google Gemini Pro API entegrasyonlu sesli AI asistan sistemi. Speech Recognition ve TTS ile doğal etkileşim.</p>
+                        <div class="project-tags"><span>Python</span><span>Gemini API</span><span>Speech</span><span>TTS</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1Z3TuyY9Zk6PGSx2rZzQw9cBZTRcb4Jov" alt="V.A.U.L.T MK9" class="project-image">
-                <span class="project-badge">AI-Powered</span>
-                <div class="project-content">
-                    <h3 class="project-title">V.A.U.L.T Multi-Agent Interface</h3>
-                    <p class="project-description">
-                        Gelişmiş çok ajanlı sistem arayüzü ile gerçek zamanlı komut işleme ve sistem izleme. Modern web teknolojileri kullanılarak tasarlanmış interaktif dashboard ve agent yönetim paneli.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Real-time UI</span>
-                        <span class="tech-tag">Dashboard</span>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/vault.jpg" alt="V.A.U.L.T"><span class="project-badge">AI-Powered</span></div>
+                    <div class="project-card-body">
+                        <h3>V.A.U.L.T Multi-Agent Interface</h3>
+                        <p>Çok ajanlı sistem arayüzü ile gerçek zamanlı komut işleme ve sistem izleme dashboard.</p>
+                        <div class="project-tags"><span>HTML/CSS</span><span>JavaScript</span><span>Real-time</span><span>Dashboard</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1UARb92sJK8Y_yw9s7p1ApfnGkXGdB7n8" alt="N8N Workflow" class="project-image">
-                <span class="project-badge">Automation</span>
-                <div class="project-content">
-                    <h3 class="project-title">N8N Workflow Automation</h3>
-                    <p class="project-description">
-                        V.A.U.L.T sistemi için N8N workflow automation ile gerçek zamanlı işlem yönetimi. Çoklu agent koordinasyonu ve akıllı komut yönlendirme sistemi ile otomatik iş akışı yönetimi.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">N8N</span>
-                        <span class="tech-tag">Workflow</span>
-                        <span class="tech-tag">API Integration</span>
-                        <span class="tech-tag">Automation</span>
+                <div class="project-card reveal" style="--card-accent: #A855F7;">
+                    <div class="project-card-img"><img src="images/n8n.jpg" alt="N8N Workflow"><span class="project-badge">Automation</span></div>
+                    <div class="project-card-body">
+                        <h3>N8N Workflow Automation</h3>
+                        <p>V.A.U.L.T sistemi için N8N workflow automation ile gerçek zamanlı işlem yönetimi.</p>
+                        <div class="project-tags"><span>N8N</span><span>Workflow</span><span>API</span><span>Automation</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://raw.githubusercontent.com/dogusotomat-dev/TemizlikTakipSistemi/main/screenshots/login-page.png" alt="Doğuş Otomat Temizlik Takip V2" class="project-image">
-                <span class="project-badge">GitHub</span>
-                <div class="project-content">
-                    <h3 class="project-title">Doğuş Otomat Temizlik Takip V2</h3>
-                    <p class="project-description">
-                        GitHub deposu olarak geliştirilen gelişmiş temizlik takip sistemi. Modern React arayüzü, MySQL veritabanı, role-based authentication ve gelişmiş raporlama özellikleri. Production-ready deployment.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">GitHub</span>
-                        <span class="tech-tag">Production</span>
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/dogus otomat.png" alt="Temizlik Takip"><span class="project-badge">GitHub</span></div>
+                    <div class="project-card-body">
+                        <h3>Doğuş Otomat Temizlik Takip V2</h3>
+                        <p>Modern React arayüzü, MySQL veritabanı, role-based authentication ve gelişmiş raporlama.</p>
+                        <div class="project-tags"><span>React</span><span>MySQL</span><span>GitHub</span><span>Production</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1vISvoVUQ0tRCzCmXW7AYX-VFv8I1J38S" alt="Dogi AI Bot V2" class="project-image">
-                <span class="project-badge">Live v2.0</span>
-                <div class="project-content">
-                    <h3 class="project-title">Dogi Teknik Destek Botu V2</h3>
-                    <p class="project-description">
-                        Geliştirilmiş AI teknik destek sistemi. Google Gemini 2.0-Flash API ile genişletilmiş hata kodu veritabanı, çoklu model desteği ve gelişmiş CORS çözümleri. Kullanıcı tipi tabanlı yanıt sistemi.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Gemini 2.0</span>
-                        <span class="tech-tag">Multi-Model</span>
-                        <span class="tech-tag">CORS Solutions</span>
-                        <span class="tech-tag">Live System</span>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/dogi soft ice cream.png" alt="Dogi AI Bot V2"><span class="project-badge">Live v2.0</span></div>
+                    <div class="project-card-body">
+                        <h3>Dogi Teknik Destek Botu V2</h3>
+                        <p>Gemini 2.0-Flash API ile genişletilmiş hata kodu veritabanı, çoklu model desteği.</p>
+                        <div class="project-tags"><span>Gemini 2.0</span><span>Multi-Model</span><span>CORS</span><span>Live</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1o12IaeVAodF7_7G1GJj2sBHr9iCO9c9o" alt="Dogi AI Bot V3" class="project-image">
-                <span class="project-badge">Live v3.0</span>
-                <div class="project-content">
-                    <h3 class="project-title">Dogi Teknik Destek Botu V3</h3>
-                    <p class="project-description">
-                        En gelişmiş sürüm. Akıllı kullanıcı bilgisi yönetimi, adaptif çözüm sunumu ve geliştirilmiş glass-morphism arayüzü. Context-aware conversation management ve optimized API handling.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Context-Aware</span>
-                        <span class="tech-tag">Glass UI</span>
-                        <span class="tech-tag">Smart Management</span>
-                        <span class="tech-tag">Production</span>
+                <div class="project-card reveal" style="--card-accent: #A855F7;">
+                    <div class="project-card-img"><img src="images/dogi soft ice cream.png" alt="Dogi AI Bot V3"><span class="project-badge">Live v3.0</span></div>
+                    <div class="project-card-body">
+                        <h3>Dogi Teknik Destek Botu V3</h3>
+                        <p>Akıllı kullanıcı bilgisi yönetimi, adaptif çözüm ve glass-morphism arayüzü.</p>
+                        <div class="project-tags"><span>Context-Aware</span><span>Glass UI</span><span>Smart</span><span>Production</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1o12IaeVAodF7_7G1GJj2sBHr9iCO9c9o" alt="Doğuş Otomat Temizlik Takip" class="project-image">
-                <span class="project-badge">Full-Stack</span>
-                <div class="project-content">
-                    <h3 class="project-title">Doğuş Otomat Temizlik Takip Sistemi</h3>
-                    <p class="project-description">
-                        Doğuş Otomat dondurma otomatları için full-stack web uygulaması. Routeman ekibi temizlik kontrolleri, fotoğraf yükleme, admin paneli ve CSV raporlama sistemi. Role-based authentication ve responsive design.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">Material-UI</span>
-                        <span class="tech-tag">Authentication</span>
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/power electronic.jpg" alt="ESP32 Vehicle"><span class="project-badge">Hardware</span></div>
+                    <div class="project-card-body">
+                        <h3>ESP32 Kontrollü Kameralı Araç</h3>
+                        <p>Lisans bitirme projesi. WebSocket ile gerçek zamanlı video akışı ve PWM motor kontrolü.</p>
+                        <div class="project-tags"><span>ESP32</span><span>WebSocket</span><span>PWM</span><span>IoT</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1vSMGLJwPSMLM0wPhtnT9zj0kVxFnY6_A" alt="V.A.U.L.T Protocol" class="project-image">
-                <span class="project-badge">System</span>
-                <div class="project-content">
-                    <h3 class="project-title">V.A.U.L.T Protocol Interface</h3>
-                    <p class="project-description">
-                        V.A.U.L.T sisteminin gelişmiş protokol arayüzü. Sistem durumu izleme, gerçek zamanlı iletişim ve komut işleme paneli. Retro-futuristik tasarım ile kullanıcı deneyimi odaklı interface.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">System Monitoring</span>
-                        <span class="tech-tag">Real-time UI</span>
-                        <span class="tech-tag">Protocol Design</span>
-                        <span class="tech-tag">Interface</span>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/vault.jpg" alt="V.A.U.L.T Protocol"><span class="project-badge">System</span></div>
+                    <div class="project-card-body">
+                        <h3>V.A.U.L.T Protocol Interface</h3>
+                        <p>Sistem durumu izleme, gerçek zamanlı iletişim ve retro-futuristik komut paneli.</p>
+                        <div class="project-tags"><span>Monitoring</span><span>Real-time</span><span>Protocol</span><span>Interface</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1FuLegEZUdQ12nD5k44l6kT_Le6-YjsO7" alt="ESP32 Vehicle" class="project-image">
-                <span class="project-badge">Hardware</span>
-                <div class="project-content">
-                    <h3 class="project-title">ESP32 Kontrollü Kameralı Araç</h3>
-                    <p class="project-description">
-                        Lisans bitirme projesi. ESP32 mikrodenetleyici tabanlı uzaktan kontrol sistemi. WebSocket protokolü ile gerçek zamanlı video akışı, PWM motor kontrolü ve LED aydınlatma sistemleri entegrasyonu.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ESP32</span>
-                        <span class="tech-tag">WebSocket</span>
-                        <span class="tech-tag">PWM Control</span>
-                        <span class="tech-tag">IoT</span>
+                <div class="project-card reveal" style="--card-accent: #A855F7;">
+                    <div class="project-card-img"><img src="images/power electronic.jpg" alt="Güç Elektroniği"><span class="project-badge">Academic</span></div>
+                    <div class="project-card-body">
+                        <h3>Güç Elektroniği Lab Projeleri</h3>
+                        <p>SPWM İnverter, Üç Fazlı Doğrutucu, IGBT Sürücü ve PWM Kontrol Sistemleri.</p>
+                        <div class="project-tags"><span>SPWM</span><span>IGBT</span><span>PWM</span><span>Power</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1UARb92sJK8Y_yw9s7p1ApfnGkXGdB7n8" alt="Power Electronics Lab" class="project-image">
-                <span class="project-badge">Academic</span>
-                <div class="project-content">
-                    <h3 class="project-title">Güç Elektroniği Laboratuvar Projeleri</h3>
-                    <p class="project-description">
-                        SPWM İnverter Kontrolü, Üç Fazlı Doğrutucu Analizi, IGBT Sürücü Tasarımı ve PWM Kontrol Sistemleri. Tektronix Osiloskop ve güç kaynakları ile detaylı performans analizi ve optimizasyon çalışmaları.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">SPWM</span>
-                        <span class="tech-tag">IGBT Driver</span>
-                        <span class="tech-tag">PWM Control</span>
-                        <span class="tech-tag">Power Analysis</span>
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/dogus otomat.png" alt="Temizlik Takip V1"><span class="project-badge">Full-Stack</span></div>
+                    <div class="project-card-body">
+                        <h3>Doğuş Otomat Temizlik Takip</h3>
+                        <p>Routeman temizlik kontrolleri, fotoğraf yükleme, admin paneli ve CSV raporlama.</p>
+                        <div class="project-tags"><span>React</span><span>Node.js</span><span>Express</span><span>MUI</span></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <img src="https://drive.google.com/uc?export=view&id=1oGtUMWYZVQz5yMBh8R7D34ZfL44ZC0fl" alt="Python Automation" class="project-image">
-                <span class="project-badge">Automation</span>
-                <div class="project-content">
-                    <h3 class="project-title">Python Dosya Yönetimi Otomasyonu</h3>
-                    <p class="project-description">
-                        Dosya ve klasör yapılarını otomatik olarak organize eden akıllı script geliştirme. Büyük veri setlerinde toplu dosya işleme ve kategorizasyon sistemleri. %80'e varan zaman tasarrufu sağlayan çözümler.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">File Management</span>
-                        <span class="tech-tag">Automation</span>
-                        <span class="tech-tag">Optimization</span>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/phyton.png" alt="Python Automation"><span class="project-badge">Automation</span></div>
+                    <div class="project-card-body">
+                        <h3>Python Dosya Yönetimi Otomasyonu</h3>
+                        <p>Büyük veri setlerinde toplu dosya işleme. %80'e varan zaman tasarrufu.</p>
+                        <div class="project-tags"><span>Python</span><span>File Mgmt</span><span>Automation</span><span>Optimize</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Certifications Section -->
     <section class="section">
-        <h2 class="section-title">Sertifikalar</h2>
-        <div class="certs-grid">
-            <div class="cert-item">
-                <div class="cert-title">IT Denetim Temel & İleri Kavramlar</div>
-                <div class="cert-org">KPMG</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">ISO 27001 & GDPR Uyumluluk</div>
-                <div class="cert-org">Profesyonel Sertifikasyon</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">COBIT & NIST Çerçeveleri</div>
-                <div class="cert-org">IT Yönetişim</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">Siber Güvenlik & Penetrasyon Testleri</div>
-                <div class="cert-org">Güvenlik Uzmanlaşması</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">KPMG Profesyonel Sertifikaları</div>
-                <div class="cert-org">KPMG</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">Automated Controls & GITCs</div>
-                <div class="cert-org">Otomasyon Kontrolü</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">Cloud Security (AWS, Azure)</div>
-                <div class="cert-org">Bulut Güvenliği</div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-title">Veri Gizliliği & Koruma</div>
-                <div class="cert-org">Veri Güvenliği</div>
+        <div class="container">
+            <h2 class="section-title reveal">Sertifikalar</h2>
+            <p class="section-subtitle reveal">45+ profesyonel sertifika (KPMG Global Quality & Risk Management)</p>
+            <div class="certs-grid">
+                <div class="cert-card reveal"><i class="fas fa-certificate"></i><h4>IT Denetim Temel & İleri Kavramlar</h4><p>KPMG</p></div>
+                <div class="cert-card reveal"><i class="fas fa-shield-alt"></i><h4>ISO 27001 & GDPR Uyumluluk</h4><p>Profesyonel Sertifikasyon</p></div>
+                <div class="cert-card reveal"><i class="fas fa-sitemap"></i><h4>COBIT & NIST Çerçeveleri</h4><p>IT Yönetişim</p></div>
+                <div class="cert-card reveal"><i class="fas fa-user-shield"></i><h4>Siber Güvenlik & Penetrasyon Testleri</h4><p>Güvenlik Uzmanlaşması</p></div>
+                <div class="cert-card reveal"><i class="fas fa-award"></i><h4>KPMG Specialists & STMs in Audit</h4><p>KPMG – Part 1 & Part 2</p></div>
+                <div class="cert-card reveal"><i class="fas fa-globe"></i><h4>Global Independence Training</h4><p>KPMG – 2021/22, 2023/24</p></div>
+                <div class="cert-card reveal"><i class="fas fa-handshake"></i><h4>Integrity at KPMG (We Do What Is Right)</h4><p>KPMG Risk Management</p></div>
+                <div class="cert-card reveal"><i class="fas fa-check-double"></i><h4>Annual Compliance Confirmation</h4><p>KPMG – Staff 2023</p></div>
+                <div class="cert-card reveal"><i class="fas fa-cogs"></i><h4>Automated Controls & GITCs</h4><p>Otomasyon Kontrolü</p></div>
+                <div class="cert-card reveal"><i class="fas fa-cloud"></i><h4>Cloud Security (AWS, Azure)</h4><p>Bulut Güvenliği</p></div>
+                <div class="cert-card reveal"><i class="fas fa-lock"></i><h4>Information Protection & Data Privacy</h4><p>KPMG GQRM</p></div>
+                <div class="cert-card reveal"><i class="fas fa-file-contract"></i><h4>Estimates for Employed KPMG Specialists</h4><p>KPMG SuccessFactors</p></div>
+                <div class="cert-card reveal"><i class="fas fa-user-check"></i><h4>KPMG IPF & DP GLMS Sertifikaları</h4><p>KPMG – 2022</p></div>
+                <div class="cert-card reveal"><i class="fas fa-search"></i><h4>Background Check & Referans Doğrulama</h4><p>KPMG Profesyonel</p></div>
+                <div class="cert-card reveal"><i class="fas fa-graduation-cap"></i><h4>40+ KPMG CertificateOfCompletion</h4><p>Çeşitli BT Denetim & Uyumluluk Eğitimleri</p></div>
+                <div class="cert-card reveal"><i class="fas fa-trophy"></i><h4>Veri Gizliliği & Koruma</h4><p>Veri Güvenliği</p></div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="section">
-        <h2 class="section-title">İletişim</h2>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
+        <div class="container">
+            <h2 class="section-title reveal">İletişim</h2>
+            <p class="section-subtitle reveal">Benimle iletişime geçin</p>
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fas fa-phone"></i></div>
+                    <h4>Telefon</h4>
+                    <a href="tel:+905344125787">(+90) 534 412 57 87</a>
                 </div>
-                <div class="contact-info">
-                    <h3>Telefon</h3>
-                    <a href="tel:+905344125787" class="contact-link">(+90) 534 412 57 87</a>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
+                    <h4>E-posta</h4>
+                    <a href="mailto:kutaykilic@gmail.com">kutaykilic@gmail.com</a>
                 </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fab fa-linkedin"></i></div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/kutay-k%C4%B1l%C4%B1%C3%A7-322409125/" target="_blank">LinkedIn Profili</a>
                 </div>
-                <div class="contact-info">
-                    <h3>E-posta</h3>
-                    <a href="mailto:kutaykilic@gmail.com" class="contact-link">kutaykilic@gmail.com</a>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fab fa-github"></i></div>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/kutaykilicai" target="_blank">GitHub Profili</a>
                 </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-linkedin"></i>
-                </div>
-                <div class="contact-info">
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/kutay-k%C4%B1l%C4%B1%C3%A7-322409125/" class="contact-link" target="_blank">LinkedIn Profili</a>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <div class="contact-info">
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/kutaykilicai" class="contact-link" target="_blank">GitHub Profili</a>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="contact-info">
-                    <h3>Konum</h3>
-                    <p class="contact-link">Sarıyer, İstanbul</p>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Konum</h4>
+                    <span>Sarıyer, İstanbul</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Kutay Kılıç. Tüm hakları saklıdır.</p>
-        <p>Elektrik & Elektronik Mühendisi | AI Destekli Yazılım Geliştirici | Güç Elektroniği Uzmanı</p>
+        <p>İç Kontrol &amp; BT Denetim Uzmanı | Yapay Zeka Yazılım Geliştirici | Elektrik ve Elektronik Mühendisi</p>
     </footer>
 
-    <script>
-        // Modern Loading animation with progress
-        window.addEventListener('load', function() {
-            const loading = document.getElementById('loading');
-            setTimeout(() => {
-                loading.style.opacity = '0';
-                loading.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 800);
-            }, 1500);
-        });
+    <!-- Floating Dock -->
+    <div class="floating-dock">
+        <a href="#home" class="dock-item" title="Ana Sayfa"><i class="fas fa-home"></i></a>
+        <a href="#about" class="dock-item" title="Hakkımda"><i class="fas fa-user"></i></a>
+        <a href="#projects" class="dock-item" title="Projeler"><i class="fas fa-code"></i></a>
+        <a href="#contact" class="dock-item" title="İletişim"><i class="fas fa-envelope"></i></a>
+    </div>
 
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const nav = document.querySelector('nav');
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            scrollProgress.style.width = scrollPercent + '%';
-            
-            // Enhanced navigation background
-            if (scrollTop > 100) {
-                nav.style.background = 'rgba(0, 0, 0, 0.95)';
-                nav.style.boxShadow = '0 10px 30px rgba(0, 210, 255, 0.1)';
-            } else {
-                nav.style.background = 'rgba(0, 0, 0, 0.8)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-
-        // Enhanced smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Advanced intersection observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                    }, index * 100); // Staggered animation
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for animation with enhanced effects
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(50px) scale(0.95)';
-            section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            observer.observe(section);
-        });
-
-        // Enhanced project card hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-                this.style.boxShadow = '0 25px 50px rgba(0, 210, 255, 0.25)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-            });
-
-            // Add click ripple effect
-            card.addEventListener('click', function(e) {
-                const ripple = document.createElement('div');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(0, 210, 255, 0.3);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple-effect 0.6s ease-out;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Enhanced typing effect for hero subtitle roles
-        const roles = document.querySelectorAll('.hero-subtitle .role');
-        roles.forEach((role, index) => {
-            role.style.opacity = '0';
-            role.style.transform = 'translateY(30px) rotateX(90deg)';
-            role.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            
-            setTimeout(() => {
-                role.style.opacity = '1';
-                role.style.transform = 'translateY(0) rotateX(0deg)';
-            }, 800 + (index * 300));
-        });
-
-        // Add particle effect on mouse move (Original working version)
-        document.addEventListener('mousemove', function(e) {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.left = e.clientX + 'px';
-            particle.style.top = e.clientY + 'px';
-            particle.style.width = '4px';
-            particle.style.height = '4px';
-            particle.style.background = 'rgba(0, 210, 255, 0.6)';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '9999';
-            particle.style.animation = 'particle-fade 1s ease-out forwards';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        });
-
-        // Parallax effect for background
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.bg-animation');
-            const speed = scrolled * 0.5;
-            
-            if (parallax) {
-                parallax.style.transform = `translateY(${speed}px)`;
-            }
-        });
-
-        // Add CSS animations for new effects
-        const dynamicStyles = document.createElement('style');
-        dynamicStyles.textContent = `
-            @keyframes particle-fade {
-                0% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) translateY(-50px);
-                }
-            }
-            
-            @keyframes ripple-effect {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(dynamicStyles);
-
-        // Enhanced skill category animations
-        document.querySelectorAll('.skill-category').forEach((category, index) => {
-            category.style.animationDelay = `${index * 0.2}s`;
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'skill-appear 0.8s ease forwards';
-                    }
-                });
-            });
-            
-            observer.observe(category);
-        });
-
-        // Add skill appear animation
-        const skillAnimation = document.createElement('style');
-        skillAnimation.textContent = `
-            @keyframes skill-appear {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50px) rotateY(45deg);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0) rotateY(0deg);
-                }
-            }
-        `;
-        document.head.appendChild(skillAnimation);
-
-        // Contact items hover animation
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                const icon = this.querySelector('.contact-icon');
-                icon.style.transform = 'scale(1.2) rotateY(360deg)';
-                icon.style.transition = 'transform 0.6s ease';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                const icon = this.querySelector('.contact-icon');
-                icon.style.transform = 'scale(1) rotateY(0deg)';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
