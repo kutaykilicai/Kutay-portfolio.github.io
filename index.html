@@ -1,178 +1,426 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kutay Kılıç | AI Development and IT Audit</title>
-  <meta name="description" content="Kutay Kılıç, Electrical and Electronics Engineer. AI development and integration, multi-agent tools, Python and FastAPI, and four years of IT audit.">
-  <meta name="author" content="Kutay Kılıç">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Kutay Kılıç">
-  <meta property="og:description" content="AI development and integration, multi-agent tools, Python and FastAPI, and four years of IT audit.">
-  <meta property="og:url" content="https://kutaykilicai.github.io/Kutay-portfolio.github.io/">
-  <meta property="og:image" content="https://kutaykilicai.github.io/Kutay-portfolio.github.io/profile.jpg">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="alternate" hreflang="tr" href="tr.html">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutay Kılıç | Yapay Zeka Geliştirme ve BT Denetimi</title>
+    <meta name="description" content="Kutay Kılıç, Elektrik-Elektronik Mühendisi. Yapay zeka geliştirme ve entegrasyonu, çoklu ajan araçları, Python ve FastAPI, dört yıl BT denetimi.">
+    <meta name="author" content="Kutay Kılıç">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kutay Kılıç | Yapay Zeka Geliştirme ve BT Denetimi">
+    <meta property="og:description" content="Kutay Kılıç, Elektrik-Elektronik Mühendisi. Yapay zeka geliştirme ve entegrasyonu, çoklu ajan araçları, Python ve FastAPI, dört yıl BT denetimi.">
+    <meta property="og:url" content="https://kutaykilicai.github.io/Kutay-portfolio.github.io/">
+    <meta property="og:image" content="https://kutaykilicai.github.io/Kutay-portfolio.github.io/profile.jpg">
+    <meta name="theme-color" content="#0b0b0b">
+    <link rel="alternate" hreflang="en" href="en.html">
+    <link rel="icon" href="profile.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header>
-  <nav class="wrap">
-    <a class="brand" href="#top">Kutay Kılıç</a>
-    <a class="hide-sm" href="#experience">Experience</a>
-    <a class="hide-sm" href="#projects">Projects</a>
-    <a class="hide-sm" href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <a class="lang" href="tr.html" lang="tr">TR</a>
-  </nav>
-</header>
-
-<main class="wrap" id="top">
-  <section class="hero fade">
-    <img src="profile.jpg" alt="Kutay Kılıç" width="132" height="132">
-    <div>
-      <h1>Kutay Kılıç</h1>
-      <p class="role">AI development and integration · IT audit</p>
-      <p>Electrical and Electronics Engineer based in Istanbul. I build AI tools end to end: multi-agent coordination, tool-using agents on cloud and local models, MCP integrations, FastAPI and WebSocket backends and React interfaces. Before and alongside that, I worked in IT audit at KPMG Türkiye, in banking and in the crypto asset sector.</p>
-      <div class="links">
-        <a class="btn" href="mailto:kutaykilic@gmail.com">Email</a>
-        <a class="btn secondary" href="https://www.linkedin.com/in/kutay-kilicc">LinkedIn</a>
-        <a class="btn secondary" href="https://github.com/kutaykilicai">GitHub</a>
-      </div>
+<body id="home">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">Kutay Kılıç</span>
+        </div>
     </div>
-  </section>
 
-  <section class="stats">
-    <div class="card stat"><b>2 years</b><span>Software development</span></div>
-    <div class="card stat"><b>2 years</b><span>AI development and integration</span></div>
-    <div class="card stat"><b>4 years</b><span>IT audit</span></div>
-  </section>
+    <!-- Aurora Background Blobs -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="list">
-      <article class="card job">
-        <h3>IT Audit Specialist, Infonal Bilgi Teknolojileri A.Ş.</h3>
-        <p class="meta">09/2026 – 11/2026 · Assignment at Yapı Kredi Kripto</p>
-        <ul>
-          <li>Tested information security and IT general controls (access management, change management, IT operations) under the information systems requirements of the Capital Markets Board of Türkiye (SPK).</li>
-          <li>Worked on application, cloud, backup, service and process inventories for the SPK/TÜBİTAK compliance programme.</li>
-          <li>Mapped the IT risk inventory, control catalogue and RCSA work to risk records in Archer, and followed up control gaps with business and technology teams.</li>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">Kutay Kılıç</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+            <li><a href="#about" class="nav-link">Hakkımda</a></li>
+            <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+            <li><a href="#experience" class="nav-link">Deneyim</a></li>
+            <li><a href="#projects" class="nav-link">Projeler</a></li>
+            <li><a href="#contact" class="nav-link">İletişim</a></li>
         </ul>
-      </article>
-      <article class="card job">
-        <h3>IT Audit Specialist, Crybo Kripto Varlık Alım Satım Platformu A.Ş.</h3>
-        <p class="meta">12/2025 – 05/2026</p>
-        <ul>
-          <li>Ran IT internal audit and internal control for crypto asset operations.</li>
-          <li>Evaluated ITGC, user access authorisations and process controls.</li>
-          <li>Led the KPMG IT audit from start to completion.</li>
-        </ul>
-      </article>
-      <article class="card job">
-        <h3>Assistant Manager, IT Control and Data Analytics, AlternatifBank</h3>
-        <p class="meta">10/2025 – 12/2025</p>
-        <ul>
-          <li>Built Python automation for audit reporting that improved process efficiency by 40%.</li>
-          <li>Carried out weekly, monthly and annual IT system and process audits under BDDK requirements.</li>
-        </ul>
-      </article>
-      <article class="card job">
-        <h3>IT Audit, KPMG Türkiye</h3>
-        <p class="meta">07/2022 – 06/2025 · Experienced Assistant from 09/2023</p>
-        <ul>
-          <li>Performed ITGC audits for more than 10 banks and financial institutions.</li>
-          <li>Assessed compliance with ISO 27001, COBIT and NIST.</li>
-          <li>Ran vulnerability assessments and penetration tests with Nessus and Burp Suite; reviewed AWS and Azure cloud security policies.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
+        <a href="en.html" class="lang-switch" lang="en">EN</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <article class="card proj">
-        <h3>Multi-Agent Coordination Framework</h3>
-        <p class="meta">Personal project</p>
-        <p>Parallel task execution, shared memory and multi-step automation across more than 38 specialised agents.</p>
-        <div class="tags"><span>Claude Code CLI</span><span>MCP</span><span>Node.js</span><span>Bash hooks</span></div>
-      </article>
-      <article class="card proj">
-        <h3>V.A.U.L.T. // B.R.E.A.C.H.</h3>
-        <p class="meta"><a href="https://github.com/kutaykilicai/vault-breach">github.com/kutaykilicai/vault-breach</a></p>
-        <p>An agent workspace that runs on cloud LLM APIs or a local LM Studio model, with memory, web, file and command tools. Risky actions need user approval. It can hand tasks to Claude, Gemini and Codex CLI.</p>
-        <div class="tags"><span>Node.js</span><span>LLM APIs</span><span>LM Studio</span></div>
-      </article>
-      <article class="card proj">
-        <h3>V.A.U.L.T. MARK XXI</h3>
-        <p class="meta"><a href="https://github.com/kutaykilicai/V.A.U.L.T">github.com/kutaykilicai/V.A.U.L.T</a></p>
-        <p>A control panel that brings Claude, Gemini and Kimi workspaces together with shared context, REST and WebSocket endpoints and file access limits.</p>
-        <div class="tags"><span>Python</span><span>FastAPI</span><span>React</span><span>WebSocket</span></div>
-      </article>
-      <article class="card proj">
-        <h3>MemPalace</h3>
-        <p class="meta">Personal project</p>
-        <p>Persistent memory for agents. Notes are embedded with MiniLM and Gemma models, stored in ChromaDB and searched semantically over an HNSW index. Agents pull context from it over MCP.</p>
-        <div class="tags"><span>ChromaDB</span><span>Embeddings</span><span>Semantic search</span><span>MCP</span></div>
-      </article>
-      <article class="card proj">
-        <h3>LinkedIn Job Finder</h3>
-        <p class="meta"><a href="https://github.com/kutaykilicai/Linkedin-Job-Finder">github.com/kutaykilicai/Linkedin-Job-Finder</a></p>
-        <p>Collects job postings, scores and filters them, and writes JSON and CSV reports.</p>
-        <div class="tags"><span>Python</span><span>Selenium</span></div>
-      </article>
-      <article class="card proj">
-        <h3>Doğuş Otomat bots</h3>
-        <p class="meta"><a href="https://github.com/kutaykilicai/TemizlikTakipSistemi">github.com/kutaykilicai/TemizlikTakipSistemi</a></p>
-        <p>Tracking and cleaning bots for vending machine operations, and contributions to a field tracking web app with role-based access, photo upload and CSV reports (two-person project).</p>
-        <div class="tags"><span>n8n</span><span>Docker</span><span>OpenAI API</span><span>React</span><span>Node.js</span></div>
-      </article>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-quote reveal">
+                    <i class="fas fa-bolt"></i>
+                    <span>"Mühendislik bilgimi yazılımla birleştiriyorum"</span>
+                </div>
+                <h1 class="hero-title reveal">
+                    Merhaba, Ben<br>
+                    <span class="hero-name">Kutay Kılıç</span>
+                </h1>
+                <p class="hero-desc reveal">
+                    Elektrik-Elektronik Mühendisiyim. Yapay zeka araçlarını baştan sona kendim geliştiriyorum: çoklu ajan koordinasyonu, araç kullanan ajanlar, MCP entegrasyonları, FastAPI ve React. Öncesinde KPMG Türkiye&#x27;de, bankacılıkta ve kripto varlık sektöründe BT denetimi yaptım.
+                </p>
+                <div class="hero-buttons reveal">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Projeleri Keşfet</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> İletişim</a>
+                </div>
+            </div>
+            <div class="hero-right reveal">
+                <div class="profile-card">
+                    <div class="profile-card-glow"></div>
+                    <div class="profile-card-inner">
+                        <h2 class="profile-card-name">Kutay Kılıç</h2>
+                        <p class="profile-card-title">Yapay Zeka Geliştirme | BT Denetimi</p>
+                        <div class="profile-card-image">
+                            <img src="profile.jpg" alt="Kutay Kılıç">
+                        </div>
+                        <div class="profile-card-footer">
+                            <div class="profile-status">
+                                <img src="profile.jpg" alt="" class="profile-mini-avatar">
+                                <div>
+                                    <span class="profile-username">@kutaykilicai</span>
+                                    <span class="profile-online"><span class="online-dot"></span> İstanbul</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn-contact-me">İletişim</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="card">
-      <dl class="skills">
-        <dt>Programming</dt><dd>Python, JavaScript/TypeScript, SQL, C++</dd>
-        <dt>LLMs and agents</dt><dd>OpenAI, Gemini and Claude APIs, local models with LM Studio, tool use, multi-agent coordination, MCP</dd>
-        <dt>Memory and retrieval</dt><dd>ChromaDB, MiniLM and Gemma embeddings, semantic search, HNSW</dd>
-        <dt>Backend and web</dt><dd>FastAPI, Node.js/Express, REST, WebSocket, React</dd>
-        <dt>Tools</dt><dd>n8n, Docker, Git/GitHub, Selenium, Claude Code, Gemini CLI, Codex CLI</dd>
-        <dt>Audit and compliance</dt><dd>ITGC, ISO 27001, COBIT, NIST, access and change management, Nessus, Burp Suite, BDDK and SPK requirements</dd>
-      </dl>
-    </div>
-  </section>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="2">0</span><span class="stat-plus"></span>
+                    <span class="stat-label">Yıl Yazılım Geliştirme</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="2">0</span><span class="stat-plus"></span>
+                    <span class="stat-label">Yıl Yapay Zeka Geliştirme</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="4">0</span><span class="stat-plus"></span>
+                    <span class="stat-label">Yıl BT Denetimi</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-number" data-target="45">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Sertifika</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="education">
-    <h2>Education and languages</h2>
-    <div class="list">
-      <div class="card">
-        <h3>B.Sc. Electrical and Electronics Engineering</h3>
-        <p class="meta">İstanbul Aydın University · 2017 – 2022</p>
-        <p>Internships at Ribon Software Technologies (2022), Tersan Shipyard (2022) and AnelGroup (2016).</p>
-      </div>
-      <div class="card">
-        <p>More than 45 professional certificates, among them IT Audit Fundamentals and Advanced Concepts (KPMG), Automated Controls and ITGCs, ISO 27001, COBIT and NIST, and cloud security (AWS, Azure).</p>
-        <p>Turkish (native), English (C2), French (A2).</p>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Hakkımda</h2>
+            <div class="about-content reveal">
+                <div class="about-glass">
+                    <p>İstanbul Aydın Üniversitesi Elektrik-Elektronik Mühendisliği mezunuyum (2017–2022). İki yıldır yazılım geliştiriyor, iki yıldır da yapay zeka geliştirme ve entegrasyonu üzerinde çalışıyorum.</p>
+                    <p>Bulut ve yerel modellerle çalışan ajanlar, 38&#x27;den fazla ajanı koordine eden bir çerçeve, ChromaDB üzerinde kalıcı bellek ve FastAPI/WebSocket arka uçları geliştirdim. Gereksinimlerin hızlı değiştiği deneme işlerinde bağımsız çalışmayı seviyorum.</p>
+                    <p>Dört yıllık BT denetimi geçmişim var: KPMG Türkiye&#x27;de 10&#x27;dan fazla banka ve finans kuruluşunda BTGC denetimi, AlternatifBank&#x27;ta BDDK kapsamında denetim ve Python otomasyonu, Crybo ve Yapı Kredi Kripto&#x27;da kripto varlık sektöründe BT denetimi ve GRC. Bu deneyim bana yapılandırılmış problem analizi ve açık raporlama alışkanlığı kazandırdı.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:kutaykilic@gmail.com">kutaykilic@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/kutay-kilicc">linkedin.com/in/kutay-kilicc</a></p>
-      <p>GitHub: <a href="https://github.com/kutaykilicai">github.com/kutaykilicai</a></p>
-    </div>
-  </section>
-</main>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Araçlar &amp; Teknolojiler</h2>
+            <p class="section-subtitle reveal">Profesyonel Yeteneklerim</p>
+            <div class="skills-grid">
+                <div class="skill-card reveal" data-delay="0"><div class="skill-icon"><i class="fab fa-python"></i></div><span class="skill-name">Python</span><span class="skill-cat">İleri Seviye</span></div>
+                <div class="skill-card reveal" data-delay="1"><div class="skill-icon"><i class="fas fa-bolt"></i></div><span class="skill-name">FastAPI</span><span class="skill-cat">Backend</span></div>
+                <div class="skill-card reveal" data-delay="2"><div class="skill-icon"><i class="fab fa-react"></i></div><span class="skill-name">React</span><span class="skill-cat">Frontend</span></div>
+                <div class="skill-card reveal" data-delay="3"><div class="skill-icon"><i class="fab fa-node-js"></i></div><span class="skill-name">Node.js</span><span class="skill-cat">Backend</span></div>
+                <div class="skill-card reveal" data-delay="4"><div class="skill-icon"><i class="fab fa-js-square"></i></div><span class="skill-name">JavaScript / TypeScript</span><span class="skill-cat">Dil</span></div>
+                <div class="skill-card reveal" data-delay="5"><div class="skill-icon"><i class="fas fa-database"></i></div><span class="skill-name">SQL</span><span class="skill-cat">Dil</span></div>
+                <div class="skill-card reveal" data-delay="6"><div class="skill-icon"><i class="fas fa-microchip"></i></div><span class="skill-name">C++</span><span class="skill-cat">Dil</span></div>
+                <div class="skill-card reveal" data-delay="7"><div class="skill-icon"><i class="fas fa-plug"></i></div><span class="skill-name">MCP</span><span class="skill-cat">AI Integration</span></div>
+                <div class="skill-card reveal" data-delay="8"><div class="skill-icon"><i class="fas fa-robot"></i></div><span class="skill-name">OpenAI / Gemini / Claude API</span><span class="skill-cat">AI</span></div>
+                <div class="skill-card reveal" data-delay="9"><div class="skill-icon"><i class="fas fa-server"></i></div><span class="skill-name">LM Studio</span><span class="skill-cat">Local LLM</span></div>
+                <div class="skill-card reveal" data-delay="10"><div class="skill-icon"><i class="fas fa-network-wired"></i></div><span class="skill-name">Multi-Agent</span><span class="skill-cat">AI</span></div>
+                <div class="skill-card reveal" data-delay="11"><div class="skill-icon"><i class="fas fa-memory"></i></div><span class="skill-name">ChromaDB</span><span class="skill-cat">Vector DB</span></div>
+                <div class="skill-card reveal" data-delay="12"><div class="skill-icon"><i class="fas fa-project-diagram"></i></div><span class="skill-name">n8n</span><span class="skill-cat">Workflow</span></div>
+                <div class="skill-card reveal" data-delay="13"><div class="skill-icon"><i class="fab fa-docker"></i></div><span class="skill-name">Docker</span><span class="skill-cat">DevOps</span></div>
+                <div class="skill-card reveal" data-delay="14"><div class="skill-icon"><i class="fab fa-git-alt"></i></div><span class="skill-name">Git / GitHub</span><span class="skill-cat">DevOps</span></div>
+                <div class="skill-card reveal" data-delay="15"><div class="skill-icon"><i class="fas fa-spider"></i></div><span class="skill-name">Selenium</span><span class="skill-cat">Automation</span></div>
+                <div class="skill-card reveal" data-delay="16"><div class="skill-icon"><i class="fas fa-terminal"></i></div><span class="skill-name">Claude Code CLI</span><span class="skill-cat">AI Dev</span></div>
+                <div class="skill-card reveal" data-delay="17"><div class="skill-icon"><i class="fas fa-terminal"></i></div><span class="skill-name">Gemini CLI</span><span class="skill-cat">AI Dev</span></div>
+                <div class="skill-card reveal" data-delay="18"><div class="skill-icon"><i class="fas fa-terminal"></i></div><span class="skill-name">Codex CLI</span><span class="skill-cat">AI Dev</span></div>
+                <div class="skill-card reveal" data-delay="19"><div class="skill-icon"><i class="fas fa-shield-alt"></i></div><span class="skill-name">ISO 27001 / COBIT / NIST</span><span class="skill-cat">Denetim</span></div>
+                <div class="skill-card reveal" data-delay="20"><div class="skill-icon"><i class="fas fa-user-secret"></i></div><span class="skill-name">Nessus / Burp Suite</span><span class="skill-cat">Güvenlik</span></div>
+                <div class="skill-card reveal" data-delay="21"><div class="skill-icon"><i class="fab fa-aws"></i></div><span class="skill-name">AWS / Azure</span><span class="skill-cat">Cloud</span></div>
+                <div class="skill-card reveal" data-delay="22"><div class="skill-icon"><i class="fas fa-microchip"></i></div><span class="skill-name">ESP32</span><span class="skill-cat">IoT</span></div>
+                <div class="skill-card reveal" data-delay="23"><div class="skill-icon"><i class="fas fa-wave-square"></i></div><span class="skill-name">SPWM / Simulink</span><span class="skill-cat">Güç Elektroniği</span></div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <div class="wrap">© 2026 Kutay Kılıç · Istanbul</div>
-</footer>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Profesyonel Deneyim</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>BT Denetim Uzmanı</h3><p class="timeline-company">Infonal Bilgi Teknolojileri A.Ş. · Yapı Kredi Kripto görevlendirmesi</p></div>
+                            <span class="timeline-date">09/2026 - 11/2026</span>
+                        </div>
+                        <p class="timeline-desc">Kripto varlık hizmet sağlayıcısında SPK bilgi sistemleri gereklilikleri kapsamında BT denetimi ve GRC çalışmaları.</p>
+                        <ul class="timeline-achievements">
+                            <li>Erişim yönetimi, değişiklik yönetimi ve BT operasyonlarına ilişkin BT genel kontrollerini ve bilgi güvenliği kontrollerini test ettim</li>
+                            <li>SPK/TÜBİTAK uyum çalışması için uygulama, bulut, yedekleme, hizmet ve süreç envanterleri üzerinde çalıştım</li>
+                            <li>BT risk envanterini, kontrol kataloğunu ve RCSA çalışmalarını Archer&#x27;daki risk kayıtlarıyla eşleştirdim; kontrol eksikliklerini iş ve teknoloji ekipleriyle takip ettim</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>BT Denetim Uzmanı</h3><p class="timeline-company">Crybo Kripto Varlık Alım Satım Platformu A.Ş.</p></div>
+                            <span class="timeline-date">12/2025 - 05/2026</span>
+                        </div>
+                        <p class="timeline-desc">Kripto varlık operasyonlarında BT iç denetim ve iç kontrol süreçleri.</p>
+                        <ul class="timeline-achievements">
+                            <li>BT iç denetim ve iç kontrol süreçlerini yürüttüm</li>
+                            <li>BTGC, kullanıcı erişim yetkileri ve süreç kontrollerini değerlendirdim</li>
+                            <li>KPMG BT denetim sürecini başından sonuna kadar yönettim</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Yönetmen Yardımcısı, BT Kontrol ve Veri Analitiği</h3><p class="timeline-company">AlternatifBank</p></div>
+                            <span class="timeline-date">10/2025 - 12/2025</span>
+                        </div>
+                        <p class="timeline-desc">BDDK düzenlemeleri kapsamında periyodik BT sistem ve süreç denetimleri.</p>
+                        <ul class="timeline-achievements">
+                            <li>Python ile denetim raporlama otomasyonu geliştirdim; süreç verimliliği %40 arttı</li>
+                            <li>Haftalık, aylık ve yıllık BT sistem ve süreç denetimleri yaptım</li>
+                            <li>Kurumsal uygulamaların risk değerlendirmelerine katıldım</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>BT Denetimi, Deneyimli Asistan (09/2023&#x27;ten itibaren)</h3><p class="timeline-company">KPMG Türkiye</p></div>
+                            <span class="timeline-date">07/2022 - 06/2025</span>
+                        </div>
+                        <p class="timeline-desc">10&#x27;dan fazla banka ve finans kuruluşunda BTGC denetimleri.</p>
+                        <ul class="timeline-achievements">
+                            <li>ISO 27001, COBIT ve NIST çerçevelerine uyumu değerlendirdim</li>
+                            <li>Nessus ve Burp Suite ile zafiyet değerlendirmeleri ve sızma testleri yaptım</li>
+                            <li>AWS ve Azure bulut güvenliği politikalarını inceledim</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Yazılım Teknolojileri Stajyeri</h3><p class="timeline-company">Ribon Software Technologies</p></div>
+                            <span class="timeline-date">2022</span>
+                        </div>
+                        <p class="timeline-desc">Siber güvenlik otomasyon betikleri ve sistem izleme araçları.</p>
+                        <ul class="timeline-achievements">
+                            <li>Python tabanlı güvenlik raporlaması</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Tasarım Mühendisliği Ofisi Stajyeri</h3><p class="timeline-company">Tersan Tersanesi</p></div>
+                            <span class="timeline-date">2022</span>
+                        </div>
+                        <p class="timeline-desc">Gemi otomasyon sistemleri için elektronik kontrol sistemleri tasarımı.</p>
+                        <ul class="timeline-achievements">
+                            <li>CADMATIC ile gemi dizaynı çalışmaları</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div><h3>Stajyer</h3><p class="timeline-company">AnelGroup – AnelSis Ltd.</p></div>
+                            <span class="timeline-date">2016</span>
+                        </div>
+                        <p class="timeline-desc">Endüstriyel otomasyonda devre tasarımı, performans testi ve arıza analizi.</p>
+                        <ul class="timeline-achievements">
+                            <li>Elektronik bileşenlerin bakım ve onarımı</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Projeler</h2>
+            <p class="section-subtitle reveal">Kendi geliştirdiğim yapay zeka, otomasyon ve donanım projeleri.</p>
+            <div class="projects-grid">
+                <div class="project-card reveal" style="--card-accent: #EF4444;">
+                    <div class="project-card-img"><img src="images/MultiAgent.png" alt="Çoklu Ajan Koordinasyon Çerçevesi" loading="lazy"><span class="project-badge">Framework</span></div>
+                    <div class="project-card-body">
+                        <h3>Çoklu Ajan Koordinasyon Çerçevesi</h3>
+                        <p>38&#x27;den fazla uzman ajan arasında paralel görev yürütme, ortak bellek ve çok adımlı otomasyon akışları.</p>
+                        <div class="project-tags"><span>Claude Code CLI</span><span>MCP</span><span>Node.js</span><span>Bash hooks</span></div>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/vault.jpg" alt="V.A.U.L.T. // B.R.E.A.C.H." loading="lazy"><span class="project-badge">AI Agent</span></div>
+                    <div class="project-card-body">
+                        <h3>V.A.U.L.T. // B.R.E.A.C.H.</h3>
+                        <p>Bulut LLM API&#x27;leri ya da yerel LM Studio modeliyle çalışan ajan arayüzü. Bellek, web, dosya ve komut araçları var; riskli işlemler kullanıcı onayı istiyor. Görevleri Claude, Gemini ve Codex CLI araçlarına devredebiliyor.</p>
+                        <div class="project-tags"><span>Node.js</span><span>LLM API</span><span>LM Studio</span></div>
+                        <a class="project-link" href="https://github.com/kutaykilicai/vault-breach" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub'da gör</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/vault.jpg" alt="V.A.U.L.T. MARK XXI" loading="lazy"><span class="project-badge">Full-Stack</span></div>
+                    <div class="project-card-body">
+                        <h3>V.A.U.L.T. MARK XXI</h3>
+                        <p>Claude, Gemini ve Kimi çalışma alanlarını ortak bağlamla birleştiren kontrol paneli; REST ve WebSocket uç noktaları ve dosya erişim sınırları.</p>
+                        <div class="project-tags"><span>Python</span><span>FastAPI</span><span>React</span><span>WebSocket</span></div>
+                        <a class="project-link" href="https://github.com/kutaykilicai/V.A.U.L.T" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub'da gör</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #6366F1;">
+                    <div class="project-card-img"><img src="images/mempalace.png" alt="MemPalace — Kalıcı Bellek" loading="lazy"><span class="project-badge">Memory</span></div>
+                    <div class="project-card-body">
+                        <h3>MemPalace — Kalıcı Bellek</h3>
+                        <p>Ajanlar için kalıcı bellek. Notlar MiniLM ve Gemma modelleriyle vektöre çevrilip ChromaDB&#x27;de tutuluyor, HNSW indeksiyle anlamsal arama yapılıyor. Ajanlar bağlamı MCP üzerinden alıyor.</p>
+                        <div class="project-tags"><span>ChromaDB</span><span>Embedding</span><span>Anlamsal arama</span><span>MCP</span></div>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #F59E0B;">
+                    <div class="project-card-img"><img src="images/phyton.png" alt="LinkedIn Job Finder" loading="lazy"><span class="project-badge">Automation</span></div>
+                    <div class="project-card-body">
+                        <h3>LinkedIn Job Finder</h3>
+                        <p>İş ilanlarını topluyor, puanlayıp filtreliyor ve JSON ile CSV raporları üretiyor.</p>
+                        <div class="project-tags"><span>Python</span><span>Selenium</span><span>JSON/CSV</span></div>
+                        <a class="project-link" href="https://github.com/kutaykilicai/Linkedin-Job-Finder" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub'da gör</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #A855F7;">
+                    <div class="project-card-img"><img src="images/dogus otomat.png" alt="Doğuş Otomat Botları" loading="lazy"><span class="project-badge">n8n + Docker</span></div>
+                    <div class="project-card-body">
+                        <h3>Doğuş Otomat Botları</h3>
+                        <p>Otomat operasyonları için takip ve temizlik botları; rol tabanlı erişim, fotoğraf yükleme ve CSV raporlama içeren saha takip uygulamasına katkı (iki kişilik proje).</p>
+                        <div class="project-tags"><span>n8n</span><span>Docker</span><span>OpenAI API</span><span>React</span><span>Node.js</span></div>
+                        <a class="project-link" href="https://github.com/kutaykilicai/TemizlikTakipSistemi" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub'da gör</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #3B82F6;">
+                    <div class="project-card-img"><img src="images/power electronic.jpg" alt="ESP32 Kontrollü Kameralı Araç" loading="lazy"><span class="project-badge">Hardware</span></div>
+                    <div class="project-card-body">
+                        <h3>ESP32 Kontrollü Kameralı Araç</h3>
+                        <p>Lisans bitirme projesi. WebSocket ile gerçek zamanlı video akışı ve PWM motor kontrolü.</p>
+                        <div class="project-tags"><span>ESP32</span><span>WebSocket</span><span>PWM</span><span>IoT</span></div>
+                    </div>
+                </div>
+                <div class="project-card reveal" style="--card-accent: #10B981;">
+                    <div class="project-card-img"><img src="images/power electronic.jpg" alt="Güç Elektroniği Lab Projeleri" loading="lazy"><span class="project-badge">Academic</span></div>
+                    <div class="project-card-body">
+                        <h3>Güç Elektroniği Lab Projeleri</h3>
+                        <p>SPWM inverter, üç fazlı doğrultucu, IGBT sürücü ve PWM kontrol çalışmaları.</p>
+                        <div class="project-tags"><span>SPWM</span><span>IGBT</span><span>PWM</span><span>MATLAB Simulink</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Sertifikalar ve Diller</h2>
+            <p class="section-subtitle reveal">45&#x27;ten fazla mesleki sertifika; bazıları:</p>
+            <div class="certs-grid">
+                <div class="cert-card reveal"><i class="fas fa-certificate"></i><h4>IT Audit Fundamentals &amp; Advanced Concepts</h4><p>KPMG</p></div>
+                <div class="cert-card reveal"><i class="fas fa-award"></i><h4>Global Quality &amp; Risk Management</h4><p>KPMG</p></div>
+                <div class="cert-card reveal"><i class="fas fa-cogs"></i><h4>Automated Controls &amp; ITGCs</h4><p>Otomatik kontroller</p></div>
+                <div class="cert-card reveal"><i class="fas fa-shield-alt"></i><h4>ISO 27001 &amp; GDPR Compliance</h4><p>Uyum</p></div>
+                <div class="cert-card reveal"><i class="fas fa-sitemap"></i><h4>COBIT &amp; NIST Frameworks</h4><p>BT yönetişimi</p></div>
+                <div class="cert-card reveal"><i class="fas fa-cloud"></i><h4>Cloud Security (AWS, Azure)</h4><p>Bulut güvenliği</p></div>
+                <div class="cert-card reveal"><i class="fas fa-user-shield"></i><h4>Cybersecurity &amp; Penetration Testing</h4><p>Güvenlik</p></div>
+                <div class="cert-card reveal"><i class="fas fa-language"></i><h4>Cambridge English: First (FCE)</h4><p>İngilizce</p></div>
+            </div>
+            <h3 class="sub-title reveal">Diller</h3>
+            <div class="certs-grid">
+                <div class="cert-card reveal"><i class="fas fa-globe"></i><h4>Türkçe</h4><p>Ana dil</p></div>
+                <div class="cert-card reveal"><i class="fas fa-globe"></i><h4>İngilizce</h4><p>C2</p></div>
+                <div class="cert-card reveal"><i class="fas fa-globe"></i><h4>Fransızca</h4><p>A2</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">İletişim</h2>
+            <p class="section-subtitle reveal">Benimle iletişime geçin</p>
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
+                    <h4>E-posta</h4>
+                    <a href="mailto:kutaykilic@gmail.com">kutaykilic@gmail.com</a>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fab fa-linkedin"></i></div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/kutay-kilicc" target="_blank" rel="noopener">linkedin.com/in/kutay-kilicc</a>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon-wrap"><i class="fab fa-github"></i></div>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/kutaykilicai" target="_blank" rel="noopener">github.com/kutaykilicai</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kutay Kılıç. Tüm hakları saklıdır.</p>
+        <p>Yapay Zeka Geliştirme ve Entegrasyonu | BT Denetimi | Elektrik-Elektronik Mühendisi</p>
+    </footer>
+
+    <!-- Floating Dock -->
+    <div class="floating-dock">
+        <a href="#home" class="dock-item" title="Ana Sayfa"><i class="fas fa-home"></i></a>
+        <a href="#about" class="dock-item" title="Hakkımda"><i class="fas fa-user"></i></a>
+        <a href="#projects" class="dock-item" title="Projeler"><i class="fas fa-code"></i></a>
+        <a href="#contact" class="dock-item" title="İletişim"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
