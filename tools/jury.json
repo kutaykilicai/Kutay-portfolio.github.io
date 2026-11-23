@@ -1,0 +1,65 @@
+{
+ "final": {
+  "deepseek": {
+   "model": "deepseek/deepseek-v4.1-flash-abliterated",
+   "overall": 7.4,
+   "scores": {
+    "Design": {
+     "score": 7.0,
+     "reason_tr": "Kompozisyon bilinçli: değişken kart genişlikleri, siyaha eriyen maskeli portre, gerçek bir bilgi bandı ve kartları konuya bağlayan pencere çerçevesi. Ama başlık tipografisi 64px'te kalıyor ve sistem fontu (Segoe UI Variable) kullanılıyor; bu yüzden hero poster gibi değil, iyi kurulmuş bir şablon gibi duruyor.",
+     "reason_en": "The composition is deliberate: varied card spans, a masked portrait bleeding into black, a real facts strip, and window chrome that ties cards to the subject. But the display type tops out at 64px in a system-font stack (Segoe UI Variable), so the hero reads as a well-built template rather than a poster."
+    },
+    "Usability": {
+     "score": 8.0,
+     "reason_tr": "Her birincil hedef sitenin kendi hareketiyle karşılık veriyor, yön bulma kalıcı yan menü ve bölüm etiketiyle anında, hiçbir şey akışı kesmiyor. Atlama bağlantısı var ama Türkçe etiketli olduğu için aracın İngilizce regex'i kaçırıyor.",
+     "reason_en": "Every primary target answers in the site's own motion, orientation is instant via the persistent side nav and current-section label, and nothing blocks. The skip link exists but is labelled in Turkish, which the tool's English regex misses."
+    },
+    "Creativity": {
+     "score": 7.0,
+     "reason_tr": "Konuya özgü tek bir fikir, masaüstü uygulaması pencere çerçevesi ve durum çubuğu, proje ızgarası ve alt bilgi boyunca taşınmış. Tutarlı ve iyi bir buluş ama alışıldık bir portfolyo ızgarasının üstünde bir kaplama; yeni bir etkileşim değil.",
+     "reason_en": "One idea specific to the subject, the desktop-app window chrome and status bar, is carried through the project grid and footer. It is a good, coherent conceit, but it is a skin on a conventional portfolio grid, not a new interaction."
+    },
+    "Content": {
+     "score": 8.0,
+     "reason_tr": "Metinlerin sesi ve ağırlığı var: öne çıkan her kart problemi ve tasarım kararını söylüyor, özel depolar gizlenmek yerine etiketleniyor, özgeçmiş verisi doğrulanabilir. Bazı satırlar (V.A.U.L.T., Kuti Dock) gerekçeyi bırakıp düz tanıma düşüyor.",
+     "reason_en": "Copy has voice and substance: each flagship card states the problem and the design decision, private repos are labelled instead of hidden, and the CV data is verifiable. Some rows (V.A.U.L.T., Kuti Dock) drop the rationale and fall back to plain description."
+    }
+   }
+  },
+  "gemini": {
+   "model": "gemini-3.1-pro-preview",
+   "overall": 7.4,
+   "scores": {
+    "Design": {
+     "score": 7.0,
+     "reason_tr": "Tasarım, net bir tipografik sistem ve kırmızı vurgulu bilinçli bir koyu renk paleti sunuyor. Oldukça tutarlı ve profesyonel, ancak akılda kalıcı, benzersiz kompozisyonlardan ziyade standart düzen kalıplarına dayanıyor.",
+     "reason_en": "The design features a clear typographic system and an intentional dark palette with red accents. It is highly consistent and professional, though it relies on standard layout patterns rather than highly memorable, unique compositions."
+    },
+    "Usability": {
+     "score": 8.0,
+     "reason_tr": "Gezinme, kenar çubuğu aracılığıyla anında anlaşılıyor ve mobil düzen iyi uyarlanmış. Site akıcı bir şekilde 60 FPS'de çalışıyor ve tüm birincil vurgu hedefleri sadece renk değişimiyle değil, fiziksel hareketle (dönüşümler) yanıt veriyor.",
+     "reason_en": "Navigation is instantly clear via the sidebar, and the mobile layout is well-adapted. The site runs at a smooth 60 FPS, and all primary hover targets respond with physical motion (transforms) rather than just color changes."
+    },
+    "Creativity": {
+     "score": 7.0,
+     "reason_tr": "Genel düzen bilinen kalıpları kullansa da, siteyi değerlendiren bir 'Yapay Zeka Jürisi' bölümünün eklenmesi, konuya özgü ve benzersiz bir dokunuş katan zekice bir fikir.",
+     "reason_en": "While the overall layout uses known patterns, the inclusion of an 'AI Jury' section that evaluates the site itself is a clever, subject-specific idea that adds a unique touch."
+    },
+    "Content": {
+     "score": 8.0,
+     "reason_tr": "Metinler spesifik ve net bir sese sahip. Proje kartları, araçların arkasındaki 'Yaklaşım' ve 'Neden'i detaylandırarak genel açıklamalardan ziyade gerçek bir içerik sunuyor.",
+     "reason_en": "The copy is specific and has a clear voice. Project cards detail the 'Approach' and 'Reasoning' behind the tools, providing real substance rather than generic descriptions."
+    }
+   }
+  }
+ },
+ "baseline": {
+  "deepseek": {
+   "overall": 7.3
+  },
+  "gemini": {
+   "overall": 6.8
+  }
+ },
+ "rounds": 4
+}

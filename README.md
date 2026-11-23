@@ -15,12 +15,13 @@ Metnin tamamı `tools/content.py` dosyasında, iki dil yan yana duruyor. Metni d
 python3 tools/build.py
 ```
 
-Tasarım kararları (renkler, yazı, bölümler) `DESIGN.md` içinde. Kasım 2026 yeniden tasarımından önceki sürüm `onceki-tasarim-20261123` etiketinde duruyor.
+Tasarım kararları (renkler, yazı, bölümler) `DESIGN.md` içinde. Önceki sürümler etiketlerde duruyor: `onceki-tasarim-20261123` (ilk yeniden tasarımdan önce) ve `krem-tasarim-20261123` (krem tema). Renkler `style.css` içindeki `:root` jetonlarında. Jüri bölümündeki puanlar DeepSeek ve Gemini'den gelir, `tools/jury.json` dosyasında tutulur.
 
 ## Kaynaklar
 
 - Yazı tipi: cihazın sistem yazı tipi (Segoe UI Variable, SF Pro). Bulunmadığında `fonts/` klasöründeki Inter kullanılır; Inter SIL Open Font License 1.1 ile lisanslıdır.
-- Proje ekran görüntüleri kendi depolarımdan alındı: kutaykilicai/vault-breach ve kutaykilicai/kuti-dock.
+- Proje ekran görüntüleri kendi depolarımdan alındı: agac-boyutu, bolmeler, robokopya, hizli-indir, kuti-dock ve vault-breach.
+- Logo: KK monogramı (`favicon.svg`, `img/logo-kk.svg`), bu site için çizildi.
 
 ## Lisans
 
