@@ -1,65 +1,127 @@
 {
+ "version": "v3",
+ "rounds": 4,
+ "date": "23.11.2026",
  "final": {
   "deepseek": {
    "model": "deepseek/deepseek-v4.1-flash-abliterated",
-   "overall": 7.4,
+   "overall": 7.35,
    "scores": {
     "Design": {
      "score": 7.0,
-     "reason_tr": "Kompozisyon bilinçli: değişken kart genişlikleri, siyaha eriyen maskeli portre, gerçek bir bilgi bandı ve kartları konuya bağlayan pencere çerçevesi. Ama başlık tipografisi 64px'te kalıyor ve sistem fontu (Segoe UI Variable) kullanılıyor; bu yüzden hero poster gibi değil, iyi kurulmuş bir şablon gibi duruyor.",
-     "reason_en": "The composition is deliberate: varied card spans, a masked portrait bleeding into black, a real facts strip, and window chrome that ties cards to the subject. But the display type tops out at 64px in a system-font stack (Segoe UI Variable), so the hero reads as a well-built template rather than a poster."
+     "reason_tr": "Net bir serif/sans tipografi sistemi, bilinçli grafit-mavi palet ve değişken kart genişlikleri var; ancak alttaki portfolyo ızgarası hâlâ alışıldık ve her çerçevenin kompoze olduğu kanıtlı değil.",
+     "reason_en": "There is a clear serif/sans type system, an intentional graphite-and-blue palette and varied card widths, but the underlying portfolio grid is still conventional and not every frame is proven composed."
     },
     "Usability": {
      "score": 8.0,
-     "reason_tr": "Her birincil hedef sitenin kendi hareketiyle karşılık veriyor, yön bulma kalıcı yan menü ve bölüm etiketiyle anında, hiçbir şey akışı kesmiyor. Atlama bağlantısı var ama Türkçe etiketli olduğu için aracın İngilizce regex'i kaçırıyor.",
-     "reason_en": "Every primary target answers in the site's own motion, orientation is instant via the persistent side nav and current-section label, and nothing blocks. The skip link exists but is labelled in Turkish, which the tool's English regex misses."
+     "reason_tr": "Gezinme açık, her birincil hover hedefi hareketle karşılık veriyor, atlama bağlantısı sekme sırasında ilk ve 60 fps korunuyor; yalnızca aracın İngilizce regex'i Türkçe etiketi yanlış okuyor.",
+     "reason_en": "Navigation is clear, every primary hover target answers with motion, the skip link is first in the tab order and 60 fps holds; only the tool's English regex misreads the Turkish skip label."
     },
     "Creativity": {
      "score": 7.0,
-     "reason_tr": "Konuya özgü tek bir fikir, masaüstü uygulaması pencere çerçevesi ve durum çubuğu, proje ızgarası ve alt bilgi boyunca taşınmış. Tutarlı ve iyi bir buluş ama alışıldık bir portfolyo ızgarasının üstünde bir kaplama; yeni bir etkileşim değil.",
-     "reason_en": "One idea specific to the subject, the desktop-app window chrome and status bar, is carried through the project grid and footer. It is a good, coherent conceit, but it is a skin on a conventional portfolio grid, not a new interaction."
+     "reason_tr": "Denetçi ve masaüstü aracı geliştirici fikri proje çerçeveleri ve yapay zeka jürisi boyunca taşınmış; ancak yeni bir etkileşimden çok tanıdık bir portfolyo ızgarasının üstünde duruyor.",
+     "reason_en": "One subject-specific idea, the auditor who builds desktop tools, is carried through the project frames and the AI jury, but it sits on a familiar portfolio grid rather than a new interaction."
     },
     "Content": {
+     "score": 7.5,
+     "reason_tr": "Metinlerin sesi ve dürüst etiketler var, birkaç kart problemi ve yaklaşımı açıklıyor; ama bazı girdiler sonuç vermeden tanımda kalıyor.",
+     "reason_en": "Copy has voice and honest labels, and several cards explain the problem and approach, but some entries stop at description without an outcome."
+    },
+    "Semantics/SEO": {
      "score": 8.0,
-     "reason_tr": "Metinlerin sesi ve ağırlığı var: öne çıkan her kart problemi ve tasarım kararını söylüyor, özel depolar gizlenmek yerine etiketleniyor, özgeçmiş verisi doğrulanabilir. Bazı satırlar (V.A.U.L.T., Kuti Dock) gerekçeyi bırakıp düz tanıma düşüyor.",
-     "reason_en": "Copy has voice and substance: each flagship card states the problem and the design decision, private repos are labelled instead of hidden, and the CV data is verifiable. Some rows (V.A.U.L.T., Kuti Dock) drop the rationale and fall back to plain description."
+     "reason_tr": "Anlamsal kabuk güçlü: tek h1, main, canonical, hreflang ve yapılandırılmış veri var; yalnızca kök dizinde robots/sitemap uyarıları mevcut.",
+     "reason_en": "The semantic shell is strong, one h1, main, canonical, hreflang and structured data, with only robots/sitemap WARNs at the host root."
+    },
+    "Animations/Transitions": {
+     "score": 8.0,
+     "reason_tr": "Birincil hedefler sitenin kendi hareketiyle karşılık veriyor, sayfa geçişi tanımlı ve kaydırma 60 fps; tablo satırı hover'ı yalnızca 1.008 ölçek.",
+     "reason_en": "Primary targets answer in the site's own motion, a page transition is declared and scrolling holds 60 fps; the table-row hover is only a 1.008 scale."
+    },
+    "Accessibility": {
+     "score": 8.0,
+     "reason_tr": "Axe ciddi ihlali sıfır, odak görünür, azaltılmış hareket duruyor ve atlama bağlantısı ilk; 60 kontrast incelemesi doğrulanmamış.",
+     "reason_en": "Axe serious violations are zero, focus is visible, reduced motion stops movement and the skip link is first; 60 contrastNeedsReview items remain unverified."
+    },
+    "WPO": {
+     "score": 9.0,
+     "reason_tr": "Kısıtlı mobil LCP 2,5 sn'nin çok altında, CLS sıfır, yükleyici yok ve JS çok küçük; yalnızca 202 KB font yükü ve 2949 ms mobil load olayı 10'u engelliyor.",
+     "reason_en": "Throttled mobile LCP is well under 2.5 s, CLS is zero, there is no loader and JS is tiny; only the 202 KB font payload and 2949 ms mobile load event keep it from a 10."
+    },
+    "Responsive": {
+     "score": 8.0,
+     "reason_tr": "Taşma ve küçük dokunma hedefi yok, gerçek bir telefon kırılma noktası var; ancak hero-meta 960 px altında yeniden kompoze edilmek yerine gizleniyor.",
+     "reason_en": "No overflow and no small tap targets, with a real phone breakpoint; the hero-meta is simply hidden under 960 px rather than recomposed."
+    },
+    "Markup/Meta-data": {
+     "score": 9.0,
+     "reason_tr": "Üst veri eksiksiz: OG, Twitter, görsel boyutları, favicon, viewport ve alt metin var; audit FAIL'i sıfır.",
+     "reason_en": "Metadata is complete, OG, Twitter, image dimensions, favicon, viewport and alt text, with zero audit FAILs."
     }
    }
   },
   "gemini": {
    "model": "gemini-3.1-pro-preview",
-   "overall": 7.4,
+   "overall": 7.7,
    "scores": {
     "Design": {
      "score": 7.0,
-     "reason_tr": "Tasarım, net bir tipografik sistem ve kırmızı vurgulu bilinçli bir koyu renk paleti sunuyor. Oldukça tutarlı ve profesyonel, ancak akılda kalıcı, benzersiz kompozisyonlardan ziyade standart düzen kalıplarına dayanıyor.",
-     "reason_en": "The design features a clear typographic system and an intentional dark palette with red accents. It is highly consistent and professional, though it relies on standard layout patterns rather than highly memorable, unique compositions."
+     "reason_tr": "Temiz ve tutarlı, net bir tipografik hiyerarşiye ve güzel bir koyu renk paletine sahip, ancak akılda kalıcı, benzersiz kompozisyonlar yerine standart ızgara/bento düzenlerine dayanıyor.",
+     "reason_en": "Clean and consistent with a clear typographic hierarchy and a nice dark palette, but relies on standard grid/bento layouts rather than memorable, unique compositions."
     },
     "Usability": {
-     "score": 8.0,
-     "reason_tr": "Gezinme, kenar çubuğu aracılığıyla anında anlaşılıyor ve mobil düzen iyi uyarlanmış. Site akıcı bir şekilde 60 FPS'de çalışıyor ve tüm birincil vurgu hedefleri sadece renk değişimiyle değil, fiziksel hareketle (dönüşümler) yanıt veriyor.",
-     "reason_en": "Navigation is instantly clear via the sidebar, and the mobile layout is well-adapted. The site runs at a smooth 60 FPS, and all primary hover targets respond with physical motion (transforms) rather than just color changes."
+     "score": 9.0,
+     "reason_tr": "Anında yönlendirme, 60 FPS, erişilebilir ve her vurgu (hover) hedefi fiziksel hareketle yanıt vererek sürtünmesiz bir deneyim sunuyor.",
+     "reason_en": "Instant orientation, 60 FPS, accessible, and every hover target responds with physical motion, providing a frictionless experience."
     },
     "Creativity": {
      "score": 7.0,
-     "reason_tr": "Genel düzen bilinen kalıpları kullansa da, siteyi değerlendiren bir 'Yapay Zeka Jürisi' bölümünün eklenmesi, konuya özgü ve benzersiz bir dokunuş katan zekice bir fikir.",
-     "reason_en": "While the overall layout uses known patterns, the inclusion of an 'AI Jury' section that evaluates the site itself is a clever, subject-specific idea that adds a unique touch."
+     "reason_tr": "Yapay zeka jürisi bölümü konuya özgü zekice bir fikir, ancak sitenin geri kalanı tanıdık portfolyo kalıplarını izliyor.",
+     "reason_en": "The AI jury section is a clever, subject-specific idea, but the rest of the site follows familiar portfolio patterns."
     },
     "Content": {
      "score": 8.0,
-     "reason_tr": "Metinler spesifik ve net bir sese sahip. Proje kartları, araçların arkasındaki 'Yaklaşım' ve 'Neden'i detaylandırarak genel açıklamalardan ziyade gerçek bir içerik sunuyor.",
-     "reason_en": "The copy is specific and has a clear voice. Project cards detail the 'Approach' and 'Reasoning' behind the tools, providing real substance rather than generic descriptions."
+     "reason_tr": "Proje açıklamaları 'Yaklaşım' ve 'Neden' başlıklarını içererek jenerik metinlerin ötesine geçiyor ve asıl sorunu ve çözümü açıklıyor.",
+     "reason_en": "Project descriptions go beyond generic copy by including 'Yaklaşım' (Approach) and 'Neden' (Why), explaining the actual problem and solution."
+    },
+    "Semantics/SEO": {
+     "score": 10.0,
+     "reason_tr": "Sıfır denetim hatası, doğru başlık sırası, geçerli meta etiketleri ve gerçek bir 404 sayfası.",
+     "reason_en": "Zero audit fails, correct heading order, valid meta tags, and a real 404 page."
+    },
+    "Animations/Transitions": {
+     "score": 9.0,
+     "reason_tr": "Sadece renk değişimi olmayan fiziksel vurgu durumları ve akıcı sayfa geçişleri.",
+     "reason_en": "Smooth page transitions and physical hover states without any color-only changes."
+    },
+    "Accessibility": {
+     "score": 10.0,
+     "reason_tr": "Sıfır axe ihlali, tüm etkileşimli öğelerde net görünür odaklanma ve uygun azaltılmış hareket desteği.",
+     "reason_en": "Zero axe violations, clear visible focus on all interactive elements, and proper reduced motion support."
+    },
+    "WPO": {
+     "score": 10.0,
+     "reason_tr": "1.2 saniye mobil LCP, sıfır CLS ve 1 MB'ın çok altında toplam sayfa boyutu ile mükemmel performans.",
+     "reason_en": "Excellent performance with mobile LCP at 1.2s, zero CLS, and a total page weight well under 1MB."
+    },
+    "Responsive": {
+     "score": 9.0,
+     "reason_tr": "Mobil düzen sadece sıkıştırılmamış, özenle oluşturulmuş; küçük dokunma hedefleri veya taşma sorunları yok.",
+     "reason_en": "Mobile layout is thoughtfully composed, not just squished, with no small tap targets or overflow issues."
+    },
+    "Markup/Meta-data": {
+     "score": 10.0,
+     "reason_tr": "Kapsamlı meta etiketleri, geçerli OG/Twitter kartları ve tüm görsellerde uygun alternatif metinler.",
+     "reason_en": "Comprehensive meta tags, valid OG/Twitter cards, and proper alt text on all images."
     }
    }
   }
  },
  "baseline": {
   "deepseek": {
-   "overall": 7.3
+   "overall": 7.4
   },
   "gemini": {
-   "overall": 6.8
+   "overall": 7.4
   }
- },
- "rounds": 4
+ }
 }

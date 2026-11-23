@@ -308,8 +308,8 @@ PROJ = {
 
 JURY = {
     "h": ("İki ayrı yapay zeka jürisi.", "Two separate AI juries."),
-    "p": ("Bu sitenin puanını ben vermedim. Son sürüm iki ayrı modele gösterildi; ikisi de Awwwards jürisinin herkese açık ölçütleriyle her başlığa 10 üzerinden puan ve gerekçe yazdı. 8'in altındaki her başlık düzeltilip yeniden denetlendi. Awwwards ile bağlantısı yoktur, puanlar tahmindir.",
-          "I did not score this site. The final version went to two separate models; both scored each criterion out of 10 with a reason, using the public Awwwards jury criteria. Any criterion under 8 was fixed and judged again. Not affiliated with Awwwards; the scores are estimates."),
+    "p": ("Bu sitenin puanını ben vermedim. Son sürüm iki ayrı modele gösterildi; ikisi de Awwwards jürisinin herkese açık ölçütleriyle her başlığa 10 üzerinden puan ve gerekçe yazdı. Awwwards ile bağlantısı yoktur, puanlar tahmindir.",
+          "I did not score this site. The final version went to two separate models; both scored each criterion out of 10 with a reason, using the public Awwwards jury criteria. Not affiliated with Awwwards; the scores are estimates."),
     "ds": ("DeepSeek", "DeepSeek"),
     "ds_sub": ("Metin modeli. HTML, CSS ve ölçümleri (LCP, CLS, erişilebilirlik, taşma) okudu.", "Text model. Read the HTML, CSS and measurements (LCP, CLS, accessibility, overflow)."),
     "gm": ("Gemini", "Gemini"),
@@ -356,4 +356,76 @@ CONTACT = {
     "github": "https://github.com/kutaykilicai",
     "foot": ("Yapay zeka geliştirme ve entegrasyonu, BT denetimi, Elektrik-Elektronik Mühendisliği.", "AI development and integration, IT audit, Electrical and Electronics Engineering."),
     "top": ("Başa dön", "Back to top"),
+}
+
+
+# v3 düzeni (sreedesigns.com düzeninden esinli, metinler Kutay'ın kendi içeriği)
+V3 = {
+    "nav": [("work", ("İşler", "Work")), ("lab", ("Deneyler", "Lab")), ("about", ("Hakkımda", "About")), ("contact", ("İletişim", "Contact"))],
+    "h1_a": ("Denetçi gözüyle", "I write software"),
+    "h1_b": ("yazılım yazıyorum.", "with an auditor\'s eye."),
+    "bio": ("Merhaba, ben Kutay. Elektrik-Elektronik Mühendisiyim; Windows için masaüstü uygulamaları ve yapay zeka ajanları yazıyorum. Dört yıl BT denetimi yaptım, bu yüzden araçlarımın çoğu riskli bir işten önce onay ister.",
+            "Hi, I\'m Kutay, an Electrical and Electronics Engineer. I write Windows desktop apps and AI agents. I spent four years in IT audit, so most of my tools ask before they do anything risky."),
+    "talk": ("Konuşalım", "Let\'s talk"),
+    "see": ("İşleri gör", "View work"),
+    "work_h": ("İşler", "Work"),
+    "work_p": ("Her gün kendi bilgisayarımda kullandığım masaüstü uygulamaları, ajanlar ve araçlardan bir seçki.",
+               "A selection of the desktop apps, agents and tools I use on my own PC every day."),
+    "work": [
+        ("Ağaç Boyutu", ("Disk alanını boyut çubuklu ağaç ve ağaç haritasıyla gösteren Windows aracı", "A Windows tool that maps disk space as a size-bar tree and a treemap")),
+        ("Bölmeler", ("Masaüstü simgelerini yarı saydam bölmelerde toplayan düzenleyici", "A desktop organiser that groups icons into translucent fences")),
+        ("RoboKopya", ("Sağ tık menüsüne Robocopy ile kopyalama ekleyen araç", "Robocopy copy and paste in the right-click menu")),
+        ("Hızlı İndir", ("Dosyayı bölümlere ayırıp paralel indiren indirme yöneticisi", "A download manager that splits a file and fetches the parts in parallel")),
+        ("V.A.U.L.T. // B.R.E.A.C.H.", ("Bulut ya da yerel modelle çalışan, riskli işte onay soran ajan arayüzü", "An agent interface on cloud or local models that asks before anything risky")),
+        ("Kuti Dock", ("Windows 11 için macOS tarzı dock ve menü çubuğu", "A macOS-style dock and menu bar for Windows 11")),
+        ("Nota Kulağı", ("Notaları kulaktan tanımayı öğreten, internetsiz çalışan PWA", "A PWA that teaches notes by ear and works offline")),
+    ],
+    "lab_h": ("Deneyler", "Lab"),
+    "lab_p": ("Ajanlar, bellek, emülatör derlemeleri ve donanım. Daha küçük, daha deneysel işler.",
+              "Agents, memory, emulator builds and hardware. Smaller, more experimental work."),
+    "lab": [  # (proje adı, büyük yazı, kısa açıklama)
+        ("MemPalace: kalıcı bellek", None, ("Notlar MiniLM ve Gemma ile vektöre çevrilir, ChromaDB içinde HNSW ile aranır; ajanlar bağlamı MCP üzerinden alır", "Notes become MiniLM and Gemma vectors, searched in ChromaDB with HNSW; agents fetch context over MCP")),
+        ("Çoklu ajan koordinasyon çerçevesi", "38+", ("uzman ajan, ortak bellek ve paralel görevlerle tek çerçevede", "specialist agents in one framework, with shared memory and parallel tasks")),
+        ("DeepSeek Ajan", None, ("Tek dosyalık masaüstü asistanı; dosya yazmadan ve komut çalıştırmadan önce sorar", "A single-file desktop assistant that asks before it writes a file or runs a command")),
+        ("Zatochi Build: First Light", "1:1", ("Second Son\'daki fare nişanı First Light\'ın kamera koduna taşındı", "Second Son\'s mouse aim carried over to First Light\'s camera code")),
+        ("NanoBanana Draw to Edit", None, ("Görselin üstüne fırçayla işaretle, değişikliği bir cümleyle anlat", "Brush over an image and describe the change in a sentence")),
+        ("ESP32 kontrollü kameralı araç", None, ("Lisans bitirme projesi: WebSocket video ve PWM motor kontrolü", "Graduation project: WebSocket video and PWM motor control")),
+        ("Definitely Not a Console", None, ("PS5 ana ekranına benzeyen başlatıcı; oyunlar, emülatörler ve kısayollar tek ekranda (resmi değildir)", "A launcher styled after the PS5 home screen; games, emulators and shortcuts on one screen (unofficial)")),
+    ],
+    "all": ("Tümünü gör", "See all"),
+    "table_h": ("Tüm projeler", "All projects"),
+    "table_p": ("İşler bölümündekiler dışında kalan projeler. Kaynağı açık olanlar GitHub\'a gider; özel depolar işaretli.",
+                "Everything not shown under Work. Public ones link to GitHub; private repositories are marked."),
+    "col_p": ("Proje", "Project"), "col_d": ("Açıklama", "Description"), "col_s": ("Yığın", "Stack"),
+    "about_h": ("Hakkımda", "About"),
+    "exp_h": ("Deneyim", "Experience"),
+    "tools_h": ("Kullandığım araçlar", "Tools I use"),
+    "tools": ["Python", "C# / .NET 8", "WPF", "FastAPI", "React", "Node.js", "TypeScript", "PowerShell", "ChromaDB", "MCP", "LM Studio", "Docker", "n8n", "Git", "Selenium", "ESP32", "MATLAB Simulink"],
+    "jury_h": ("Yapay zeka jürisi", "AI jury"),
+    "prev": ("Önceki", "Previous"), "next": ("Sonraki", "Next"),
+    "contact_h": ("Bir iş, bir fikir ya da bir soru.", "A job, an idea or a question."),
+    "contact_p": ("En hızlı yol e-posta. LinkedIn ve GitHub da açık.", "Email is quickest. LinkedIn and GitHub work too."),
+    "net_c": ("Kutay Kılıç", "Kutay Kılıç"),
+    "net_s": ("kod ve denetim arasında", "between code and audit"),
+    "net": ["Python", "C#", "WPF", "FastAPI", "MCP", "ChromaDB", "BTGC", "ISO 27001", "COBIT", "ESP32", "SPWM", "LM Studio", "React", "PowerShell", "n8n", "Docker", "NIST", "WebSocket"],
+    "copy": ("© 2026", "© 2026"),
+}
+
+# Öne çıkan iki kartın yaklaşım notları (kaynak: depoların README dosyaları)
+_HOW = {
+    "Kuti Dock": ("Genie efekti Direct3D 11 ve DirectComposition ile ekran kartında çizilir; kullanılamazsa normal küçültmeye döner. Tam ekran video ve oyunlarda dock kendini gizler.",
+                  "The Genie effect is drawn on the GPU with Direct3D 11 and DirectComposition, and falls back to a normal minimise when that is unavailable. The dock hides itself during full-screen video and games."),
+    "V.A.U.L.T. // B.R.E.A.C.H.": ("İki modda da bir Obsidian kasası bellek olarak kullanılır; harici paket yok, yalnızca Node.js gerekir.",
+                                   "Both modes use an Obsidian vault as memory; there are no external packages, only Node.js."),
+}
+for _p in PROJ["items"]:
+    if isinstance(_p["name"], str) and _p["name"] in _HOW and not _p.get("how"):
+        _p["how"] = _HOW[_p["name"]]
+
+V3["ask"] = {
+    "q": ("Bu bağlantı e-posta uygulamanı açar. Devam edilsin mi?", "This link opens your email app. Go ahead?"),
+    "open": ("Aç", "Open"),
+    "copy": ("Adresi kopyala", "Copy address"),
+    "copied": ("Kopyalandı", "Copied"),
+    "close": ("Vazgeç", "Cancel"),
 }

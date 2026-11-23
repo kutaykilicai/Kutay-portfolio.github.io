@@ -1,42 +1,23 @@
-# Tasarım notları
+# Tasarım notları (v3)
 
 ## Kısa
 - Kimin için: Kutay Kılıç. Ziyaretçi: işe alım yapanlar, ekip liderleri, birlikte proje yapmak isteyenler.
-- Sitenin işi: kim olduğunu üç saniyede anlatmak, kendi yazdığı uygulamaları göstermek, iletişime yönlendirmek.
-- Dil: Türkçe (index.html) ve İngilizce (en.html). Metin yalnızca gerçek kaynaklardan (depo README'leri, önceki sürüm) gelir; uydurma rakam, referans veya proje yok.
+- Dil: Türkçe (index.html) ve İngilizce (en.html). Metin yalnızca gerçek kaynaklardan (depo README'leri, önceki sürüm) gelir; uydurma rakam, referans ya da proje yok.
 
-## Konsept kartı
-```
-Fikir:        Site, Kutay'ın kendi yazdığı Windows uygulamalarından biri gibi açılır: araç çubuğu, yan panel, Mica yüzeyler.
-Metafor:      Masaüstü uygulama penceresi (Ağaç Boyutu ve DeepSeek Ajan'daki araç çubuğu + yan menü düzeni).
-İmza:         Projelerdeki segmentli süzgeç: seçim hapı kategoriye kayar, kartlar yumuşakça yer değiştirir. Araç çubuğunun ortası bulunulan bölümün adını gösterir.
-Duygu:        Sakin, düzenli, yerli bir Windows uygulaması kadar tanıdık.
-Hareket fiili: yerine oturmak. Kısa yükselme, tek easing (cubic-bezier .22,1,.36,1).
-Ekran görüntüsü: dev "Kutay Kılıç", altında kırmızı vurgulu "masaüstü uygulamaları ve yapay zeka ajanları", solda yan panel.
-```
+## Düzen
+- sreedesigns.com düzeninden esinli editoryal ızgara: kenarlarda ve dört sütunda sayfa boyu 1 px dikey çizgiler, bölümler arasında 1 px yatay çizgiler.
+- Sabit, saydam üst menü: solda KK logosu ve ad, sağda köşeli parantezli bağlantılar. Sol altta © 2026, sağ altta LinkedIn ve GitHub.
+- Giriş: tam ekran, kendi yazdığım WebGL ipek shader'ı (lacivertten grafite akış, hafif ark reaktörü mavisi). Azaltılmış harekette ya da WebGL yoksa CSS degradesi.
+- İşler: dört sütunlu ızgarada 7 öne çıkan proje, kaydırmalı yükseklikler, bir geniş kart, 3+1 satır. Üzerine gelince imleci izleyen ışık ve tarama çizgisi; kart üstten çıkarken 0,93'e küçülüp solar.
+- Deneyler: çizgili bento. Tüm projeler: Proje, Açıklama, Yığın, bağlantı sütunlu tablo; masaüstünde imleci izleyen önizleme.
+- Hakkımda, araçlar şeridi, yapay zeka jürisi alıntıları (001 / 008 sayaçlı, soldurarak geçiş), kelime ağlı altbilgi.
+- E-posta bağlantısı açmadan önce sorar ve adresi kopyalama seçeneği sunar.
 
 ## Sistem
-- Renk jetonları `style.css` içindeki `:root` bloğunda; paleti değiştirmek için yalnızca orayı düzenle.
-  - Zemin Jet Black #0B0B0C, yüzeyler #141416 ve #1C1C1E, yükseltilmiş yüzey #2A2A2D, başlıklar #F3F4F6.
-  - Smoke Grey #6A6C6E yalnızca kenarlık ve ayraçlarda; küçük metinde AA'yı geçmediği için ikincil yazı ve menü #9A9C9E.
-  - Tek vurgu: Cherry Red #C41E1E. Yalnızca ana buton, logo ve girişteki tek vurgu çizgisi. Bağlantılar başlık rengindedir, odak halkası #F3F4F6.
-  - Kontrast: başlık/zemin 17,9:1, ikincil yazı/zemin 7,1:1, ana buton beyaz/kırmızı 5,9:1.
-- Yazı: Segoe UI Variable, -apple-system, SF Pro; ikisi de yoksa kendi barındırılan Inter, sonra system-ui.
-- Menü bağlantıları büyük harf, 11 px, harf aralığı .08em. Girişte küçük büyük harfli rozet (1 px rgba(255,255,255,.2) kenar, 4 px köşe). H1 44 ile 64 px arası, satır yüksekliği 1,05, harf aralığı -0,02em, ağırlık 500.
-- Düğmeler hap biçiminde (9999 px): ana düğme kırmızı dolgu ve beyaz yazı, ikincil düğme rgba(255,255,255,.05) zemin ve rgba(255,255,255,.25) kenar.
-- Giriş fotoğrafı sağda, soldan siyaha eriyen geçiş, alt solma ve hafif kırmızı kenar parıltısıyla. Altında üst çizgili şeritte üç gerçek bilgi.
-- Kart köşe yarıçapı 12 px. Araç çubuğu ve yan panel yarı saydam, backdrop-filter bulanıklığıyla Mica hissi; zeminde çok hafif doku.
-- Hareket: yalnızca transform ve opacity. Giriş sırayla yükselir, bölümler görünür alana girince belirir (IntersectionObserver), üzerine gelince kart kalkar, basınca düğme küçülür, üzerine gelince parlaklık hafifçe artar, giriş fotoğrafı 40 saniyede çok yavaş büyür. prefers-reduced-motion açıksa hareket yok.
-- Telefonda yan panel araç çubuğundaki düğmeyle açılan çekmeceye dönüşür.
+- Renk jetonları `style.css` içindeki `:root` bloğunda. Zemin #0A0B0D, yüzeyler #121418 ve #1A1D22, çizgi rgba(255,255,255,.08), yazı #EDEFF2, ikincil yazı #9AA1AB (zeminde 7,6:1), vurgu #5AC8FA (10:1), etkileşim #0A84FF. Altın #C9A227 yalnızca köşedeki küçük nokta. Kırmızı yok.
+- Yazı: başlıklar Newsreader (OFL, kendi barındırılan), arayüz Inter (OFL), sonra Segoe UI Variable ve SF. Sayaçlar tabular-nums.
+- Kartlar düz, 2-4 px köşe, gölge yok. Bağlantı ve düğmeler köşeli parantez tipografisi.
+- Hareket: yalnızca transform ve opacity; belirme 0,3 sn ease, 100 ms aralıklı. prefers-reduced-motion açıkken hareket yok.
 
-## Bölümler
-1. Giriş: isim, tek cümle, ana buton, eriyen portre, üç gerçek bilgi (proje ve açık depo sayısı content.py'den hesaplanır).
-2. Hakkımda: metin, kısa tablo, deneyim ve stajlar.
-3. Projeler: segmentli süzgeç, ekran görüntülü öne çıkanlar, diğer projeler listesi. Özel depolar bağlantısız ve işaretli.
-4. Yetenekler, sertifikalar, diller.
-5. Jüri: DeepSeek ve Gemini'nin son tur puanları ve gerekçeleri (tools/jury.json). Puanı site sahibi ya da yapan ajan vermez.
-6. İletişim.
-
-## Kaynak ve içerik
-- Ekran görüntüleri: kutaykilicai/agac-boyutu, bolmeler, robokopya, hizli-indir, kuti-dock ve vault-breach depolarındaki örnek verili görüntüler.
-- Metin tools/content.py içinde; `python3 tools/build.py` iki HTML dosyasını üretir.
+## Kaynak
+- Metin tools/content.py içinde; `python3 tools/build.py` iki HTML dosyasını üretir. Jüri sonuçları tools/jury.json.
