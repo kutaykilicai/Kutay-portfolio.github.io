@@ -17,7 +17,7 @@
 - Renk jetonları `style.css` içindeki `:root` bloğunda. Zemin #0A0B0D, yüzeyler #121418 ve #1A1D22, çizgi rgba(255,255,255,.08), yazı #EDEFF2, ikincil yazı #9AA1AB (zeminde 7,6:1), vurgu #5AC8FA (10:1), etkileşim #0A84FF. Altın #C9A227 yalnızca köşedeki küçük nokta. Kırmızı yok.
 - Yazı: başlıklar Newsreader (OFL, kendi barındırılan), arayüz Inter (OFL), sonra Segoe UI Variable ve SF. Sayaçlar tabular-nums.
 - Kartlar düz, 2-4 px köşe, gölge yok. Bağlantı ve düğmeler köşeli parantez tipografisi.
-- Hareket: yalnızca transform ve opacity; belirme 0,3 sn ease, 100 ms aralıklı. prefers-reduced-motion açıkken hareket yok.
+- Hareket: yalnızca transform ve opacity (giriş başlığındaki kısa bulanıklık hariç); belirme 0,6-0,7 sn, var(--ease), 80 ms aralıklı. Giriş CSS ile, kaydırma katmanı GSAP, ScrollTrigger ve Lenis ile (yüklemeden sonra gelir). Başlık düz yazı renginde, degrade metin yok. prefers-reduced-motion açıkken hareket yok.
 
 ## Kaynak
 - Metin tools/content.py içinde; `python3 tools/build.py` iki HTML dosyasını üretir. Jüri sonuçları tools/jury.json.

@@ -241,7 +241,7 @@ def page(i):
 <link rel="preload" href="fonts/newsreader-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{ld}</script>
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('mo')</script>
 </head>
 <body>
 <a class="skip" href="#main">{g(META["skip"])}</a>

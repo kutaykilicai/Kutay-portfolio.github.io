@@ -1,8 +1,55 @@
-// Kutay Kılıç portfolyosu v3. Kütüphane yok; içerik JS olmadan da tam görünür.
+// Kutay Kılıç portfolyosu v3.2. İçerik JS olmadan da tam görünür. Kaydırma hareketi için GSAP, ScrollTrigger ve
+// Lenis (vendor/) sayfa yüklendikten sonra gelir, böylece ilk boyama beklemez.
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // Telefonda ipek daha düşük çözünürlükte ve 30 karede çizilir
+  const lite = !fine || innerWidth < 760;
+  const mo = root.classList.contains('mo') && !reduce;
+
+  // Kelimeleri sar: ekran okuyucu başlığın tamamını tek parça okur
+  const words = (el, mask) => {
+    const label = [...el.childNodes].filter((n) => !(n.nodeType === 1 && n.getAttribute('aria-hidden') === 'true')).map((n) => n.textContent).join('').trim();
+    const out = [];
+    const walk = (node) => [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 1) { if (n.getAttribute('aria-hidden') !== 'true' && !n.classList.contains('num')) walk(n); return; }
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      const f = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach((w) => {
+        if (!w) return;
+        if (/^\s+$/.test(w)) { f.append(w); return; }
+        const s = document.createElement('span');
+        s.className = 'bw'; s.textContent = w; s.style.setProperty('--i', out.length);
+        if (mask) { const m = document.createElement('span'); m.className = 'wm'; m.append(s); f.append(m); } else f.append(s);
+        out.push(s);
+      });
+      n.replaceWith(f);
+    });
+    walk(el);
+    el.setAttribute('aria-label', label);
+    [...el.children].forEach((c) => { if (!c.hasAttribute('aria-hidden')) c.setAttribute('aria-hidden', 'true'); });
+    return out;
+  };
+
+  // Giriş: başlık kelime kelime netleşir (React Bits BlurText), ardından metin, düğmeler ve sayılar gelir.
+  // Kütüphanesiz CSS animasyonu; portre görünür kalır, çünkü sayfanın en büyük öğesi o.
+  if (mo) {
+    words(document.getElementById('hero-h'), false);
+    // Sayılar sıfırdan sayar (React Bits CountUp); tabular rakam olduğu için satır kaymaz
+    document.querySelectorAll('.hero-meta dd.num').forEach((dd) => {
+      const n = parseInt(dd.textContent, 10); if (!n) return;
+      dd.textContent = '0';
+      const t0 = performance.now() + 650, d = 1200;
+      const step = (now) => {
+        const k = Math.min(Math.max((now - t0) / d, 0), 1);
+        dd.textContent = String(Math.round(n * (1 - Math.pow(1 - k, 3))));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+    root.classList.add('mo-run');
+  }
 
   // Belirme: aynı listedeki kardeşler 100 ms arayla
   const rv = [...document.querySelectorAll('.rv')];
@@ -20,6 +67,68 @@
 
   // Klavyeyle odaklanan öğe henüz belirmediyse hemen göster
   document.addEventListener('focusin', (e) => { const r = e.target.closest('.rv'); if (r) r.classList.add('in'); });
+
+  // Kaydırma hareketi: sayfa yüklendikten sonra kütüphaneleri sırayla getir
+  if (mo) {
+    const load = () => {
+      ['vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'].forEach((src, j, all) => {
+        const sc = document.createElement('script');
+        sc.src = src; sc.async = false;
+        if (j === all.length - 1) sc.onload = () => { if (window.gsap && window.ScrollTrigger) motion(window.gsap, window.ScrollTrigger); };
+        document.head.append(sc);
+      });
+    };
+    if (document.readyState === 'complete') load(); else addEventListener('load', load, { once: true });
+  }
+  function motion(G, ST) {
+    G.registerPlugin(ST);
+    const ease = 'power3.out';
+    const below = (el) => el.getBoundingClientRect().top > innerHeight * 0.9;
+
+    // Lenis: tekerlekle yumuşak kaydırma. Dokunmatikte tarayıcının kendi kaydırması kalır.
+    if (window.Lenis && fine) {
+      const lenis = new Lenis({ lerp: 0.12, anchors: true });
+      lenis.on('scroll', ST.update);
+      G.ticker.add((t) => lenis.raf(t * 1000));
+      G.ticker.lagSmoothing(0);
+    }
+
+    // Girişten çıkarken portre ve metin farklı hızda kayar
+    const hero = document.querySelector('.hero');
+    const st = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
+    G.to(hero.querySelector('.hero-por img'), { y: 70, ease: 'none', scrollTrigger: st });
+    G.to(hero.querySelector('.hero-in'), { y: -40, ease: 'none', scrollTrigger: { ...st } });
+
+    // Bölüm başlıkları: kelimeler maskenin altından yükselir (React Bits SplitText). Henüz görünmeyenlere uygulanır.
+    document.querySelectorAll('.sh h2').forEach((h2) => {
+      if (!below(h2)) return;
+      const w = words(h2, true);
+      G.set(w, { yPercent: 110 });
+      G.to(w, { yPercent: 0, duration: 0.8, stagger: 0.05, ease, scrollTrigger: { trigger: h2, start: 'top 88%', once: true } });
+    });
+
+    // İletişim başlığı girişteki gibi kelime kelime netleşir
+    const ch = document.getElementById('contact-h');
+    if (ch && below(ch)) {
+      const cw = words(ch, false);
+      G.set(cw, { opacity: 0, yPercent: 40, filter: 'blur(8px)' });
+      G.to(cw, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 0.9, stagger: 0.07, ease, scrollTrigger: { trigger: ch, start: 'top 90%', once: true } });
+    }
+
+    // Mıknatıs düğmeler (React Bits Magnet): imleç yaklaşınca düğme ona doğru hafifçe kayar
+    if (fine) document.querySelectorAll('.hero .talk, .hero .chip, .foot .chip, .foot .mail').forEach((el) => {
+      el.classList.add('mg');
+      const xTo = G.quickTo(el, 'x', { duration: 0.4, ease }), yTo = G.quickTo(el, 'y', { duration: 0.4, ease });
+      const pad = 40, k = 0.25;
+      let on = false;
+      addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2 - G.getProperty(el, 'x')), dy = e.clientY - (r.top + r.height / 2 - G.getProperty(el, 'y'));
+        if (Math.abs(dx) < r.width / 2 + pad && Math.abs(dy) < r.height / 2 + pad) { on = true; xTo(dx * k); yTo(dy * k); }
+        else if (on) { on = false; xTo(0); yTo(0); }
+      }, { passive: true });
+    });
+  }
 
   // İş kartları: imleci izleyen ark ışığı, kart üstten çıkarken hafif küçülüp solma
   if (!reduce) {
@@ -160,14 +269,18 @@ gl_FragColor=vec4(c,1.);}`;
   const loc = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const uR = gl.getUniformLocation(pr, 'R'), uT = gl.getUniformLocation(pr, 'T');
   const size = () => {
-    const s = Math.min(devicePixelRatio || 1, 1.5) * 0.5;
+    const s = Math.min(devicePixelRatio || 1, 1.5) * (lite ? 0.35 : 0.5);
     cv.width = Math.max(2, Math.round(cv.clientWidth * s)); cv.height = Math.max(2, Math.round(cv.clientHeight * s));
     gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(uR, cv.width, cv.height);
   };
   size(); addEventListener('resize', size, { passive: true });
   let vis = true, id = 0;
   const t0 = performance.now() - 20000;
-  const draw = (now) => { gl.uniform1f(uT, (now - t0) / 1000); gl.drawArrays(gl.TRIANGLES, 0, 3); id = vis && !document.hidden ? requestAnimationFrame(draw) : 0; };
+  let last = 0;
+  const draw = (now) => {
+    if (!lite || now - last > 32) { last = now; gl.uniform1f(uT, (now - t0) / 1000); gl.drawArrays(gl.TRIANGLES, 0, 3); }
+    id = vis && !document.hidden ? requestAnimationFrame(draw) : 0;
+  };
   const start = () => { if (!id && vis && !document.hidden) id = requestAnimationFrame(draw); };
   new IntersectionObserver((es) => { vis = es[0].isIntersecting; start(); }).observe(cv);
   document.addEventListener('visibilitychange', start);
