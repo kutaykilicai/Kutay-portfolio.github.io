@@ -44,18 +44,25 @@ def by_name(n):
 def bk(label, cls=""):
     return f'<span class="bk{cls}" aria-hidden="true">[</span>{label}<span class="bk{cls}" aria-hidden="true">]</span>'
 
-def mem_svg():
-    # MemPalace kutucuğu için süs: sabit tohumlu nokta bulutu ve en yakın komşu bağları
-    import random
-    rnd = random.Random(7)
-    pts = [(rnd.uniform(10, 1190), rnd.uniform(10, 190)) for _ in range(120)]
-    lines = []
-    for k, (x, y) in enumerate(pts[:60]):
-        near = sorted(pts, key=lambda q: (q[0] - x) ** 2 + (q[1] - y) ** 2)[1:3]
-        for qx, qy in near:
-            lines.append(f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{qx:.0f}" y2="{qy:.0f}"/>')
-    dots = "".join(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{1.8 if k % 5 else 3}"{" class=\"hot\"" if k % 11 == 0 else ""}/>' for k, (x, y) in enumerate(pts))
-    return f'<svg class="mem" viewBox="0 0 1200 200" aria-hidden="true" focusable="false"><g class="mem-l">{"".join(lines)}</g><g class="mem-d">{dots}</g></svg>'
+def mem_svg(g):
+    # MemPalace kutucuğu: notlar vektöre çevrilir, ChromaDB'de durur, ajanlar MCP ile geri çağırır
+    M = V3["mem"]
+    t = lambda k: g(M[k])
+    notes = "".join(f'<rect x="{70 + k * 14}" y="{62 + k * 14}" width="120" height="78" rx="4" class="mm-note"/>' for k in range(3))
+    lines = "".join(f'<line x1="{98 + 28}" y1="{108 + 28 + k * 12}" x2="{98 + 28 + (70 - k * 18)}" y2="{108 + 28 + k * 12}" class="mm-txt"/>' for k in range(3))
+    agents = "".join(f'<g class="mm-agent"><circle cx="1030" cy="{58 + k * 52}" r="17"/><path d="M1022 {58 + k * 52} h16 M1030 {50 + k * 52} v16" /></g>' for k in range(3))
+    return (f'<svg class="mem" viewBox="0 0 1200 230" role="img" aria-label="{t("cap")}" focusable="false">'
+            f''
+            f'<g class="mm-paths"><path id="mm-a" d="M222 120 C300 120 320 120 392 120"/><path id="mm-b" d="M548 120 C590 120 600 120 640 120"/>'
+            f'<path id="mm-c" d="M780 106 C860 80 900 60 1008 58"/><path id="mm-d" d="M780 120 C880 112 920 110 1008 110"/><path id="mm-e" d="M780 134 C860 150 900 162 1008 162"/></g>'
+            f'{notes}{lines}<text x="150" y="196" class="mm-l">{t("notes")}</text>'
+            f'<rect x="392" y="98" width="156" height="44" rx="4" class="mm-chip"/><text x="470" y="126" class="mm-c">{t("embed")}</text>'
+            f'<g class="mm-db"><ellipse cx="710" cy="74" rx="70" ry="16"/><path d="M640 74 v92 a70 16 0 0 0 140 0 v-92"/><path d="M640 104 a70 16 0 0 0 140 0 M640 134 a70 16 0 0 0 140 0" class="mm-ring"/></g>'
+            f'<text x="710" y="210" class="mm-l">{t("store")}</text><text x="710" y="226" class="mm-s">{t("hnsw")}</text>'
+            f'{agents}<text x="1030" y="210" class="mm-l">{t("agents")}</text><text x="895" y="196" class="mm-s">{t("mcp")}</text>'
+            + "".join(f'<circle r="3.2" class="mm-dot"><animateMotion dur="{d}s" begin="{bg}s" repeatCount="indefinite"><mpath href="#{p}"/></animateMotion></circle>'
+                      for p, d, bg in (("mm-a", 2.4, 0), ("mm-a", 2.4, 1.2), ("mm-b", 1.4, .6), ("mm-c", 2.8, .2), ("mm-d", 2.8, 1.1), ("mm-e", 2.8, 1.9)))
+            + '</svg>')
 
 def net_svg():
     # Altbilgideki kelime ağı: her kelimeden ortadaki ada ince çizgi
@@ -155,12 +162,12 @@ def page(i):
 
     # Deneyler (bento)
     tiles = ""
-    spans = ["t4", "t1", "t2", "t1", "t2", "t1", "t1"]
+    spans = ["t4"] + ["t1"] * 8
     for k, (nm, big, d) in enumerate(V3["lab"]):
         p = by_name(nm)
         vis = ""
         if nm.startswith("MemPalace"):
-            vis = mem_svg()
+            vis = mem_svg(g)
         if big:
             vis = f'<p class="t-big" aria-hidden="true">{big}</p>'
         link = (f'<a class="t-link" href="{p["url"]}" rel="noopener">{g(p["name"])}<span class="sr"> ({g(PROJ["gh"])})</span></a>'
@@ -192,8 +199,8 @@ def page(i):
     interns = "".join(f'<li class="xp rv"><p class="xp-w num"><time>{y}</time></p><div class="xp-r"><h4>{g(r)}</h4><p>{g(o)}</p></div><p class="xp-s">{g(d)}</p></li>'
                       for y, r, o, d in EXP["interns"])
     groups = "".join(f'<div class="sk rv"><h4>{g(h)}</h4><ul>{"".join(f"<li>{g(x)}</li>" for x in xs)}</ul></div>' for h, xs in SKILLS["groups"])
-    certs = "".join(f'<li><span>{g(n)}</span><span class="muted">{g(d)}</span></li>' for n, d in SKILLS["certs"])
-    langs = "".join(f'<li><span>{g(a)}</span><span class="muted">{g(b)}</span></li>' for a, b in SKILLS["langs"])
+    certs = "".join(f'<li><span class="kv-k">{g(n)}</span><span class="kv-v">{g(d)}</span></li>' for n, d in SKILLS["certs"])
+    langs = "".join(f'<li><span class="kv-k">{g(a)}</span><span class="kv-v">{g(b)}</span></li>' for a, b in SKILLS["langs"])
 
     tools = "".join(f'<li class="tl">{html.escape(t)}</li>' for t in V3["tools"])
 
@@ -248,6 +255,7 @@ def page(i):
 <main id="main">
   <section id="top" class="hero" aria-labelledby="hero-h">
     <canvas class="silk" aria-hidden="true"></canvas>
+    <figure class="hero-por"><img src="img/portre-800.jpg" srcset="img/portre-480.jpg 480w, img/portre-800.jpg 800w" sizes="(max-width: 960px) 60vw, 34vw" width="800" height="800" alt="{g(V3["portrait"])}" fetchpriority="high" decoding="async"></figure>
     <div class="hero-in">
       <h1 id="hero-h"><span class="h1-l"><span>{g(V3["h1_a"])}</span></span> <span class="h1-l"><span>{g(V3["h1_b"])}</span></span></h1>
       <p class="bio">{g(V3["bio"])}</p>
@@ -269,9 +277,8 @@ def page(i):
   </section>
 
   <section id="lab" class="sec" aria-labelledby="lab-h">
-    <div class="sh rv"><h2 id="lab-h"><span class="sh-n" aria-hidden="true">02</span>{g(V3["lab_h"])}</h2><p>{g(V3["lab_p"])}</p></div>
+    <div class="sh rv"><h2 id="lab-h"><span class="sh-n" aria-hidden="true">02</span>{g(V3["lab_h"])}</h2><p>{g(V3["lab_p"])}</p><p class="sh-act"><a class="chip" href="#all">{bk(g(V3["all"]))}</a></p></div>
     <ul class="bento">{tiles}</ul>
-    <p class="see-all rv"><a class="chip" href="#all">{bk(g(V3["all"]))}</a></p>
   </section>
 
   <section id="all" class="sec" aria-labelledby="all-h">
@@ -291,11 +298,10 @@ def page(i):
     <ol class="xps">{jobs}</ol>
     <h3 class="sub rv">{g(EXP["intern_h"])}</h3>
     <ol class="xps">{interns}</ol>
-    <h3 class="sub rv">{g(SKILLS["h"])}</h3>
-    <div class="sks">{groups}</div>
+    <div class="skbox rv"><h3 class="sub">{g(SKILLS["h"])}</h3><div class="sks">{groups}</div></div>
     <div class="cl">
-      <div class="rv"><h3 class="sub">{g(SKILLS["cert_h"])}</h3><p class="small muted">{g(SKILLS["cert_p"])}</p><ul class="kv">{certs}</ul></div>
-      <div class="rv"><h3 class="sub">{g(SKILLS["lang_h"])}</h3><ul class="kv">{langs}</ul></div>
+      <div class="rv cl-c"><h3 class="sub">{g(SKILLS["cert_h"])}</h3><p class="small muted">{g(SKILLS["cert_p"])}</p><ul class="kv">{certs}</ul></div>
+      <div class="rv cl-l"><h3 class="sub">{g(SKILLS["lang_h"])}</h3><ul class="kv">{langs}</ul></div>
     </div>
   </section>
 

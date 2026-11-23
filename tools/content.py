@@ -391,6 +391,8 @@ V3 = {
         ("NanoBanana Draw to Edit", None, ("Görselin üstüne fırçayla işaretle, değişikliği bir cümleyle anlat", "Brush over an image and describe the change in a sentence")),
         ("ESP32 kontrollü kameralı araç", None, ("Lisans bitirme projesi: WebSocket video ve PWM motor kontrolü", "Graduation project: WebSocket video and PWM motor control")),
         ("Definitely Not a Console", None, ("PS5 ana ekranına benzeyen başlatıcı; oyunlar, emülatörler ve kısayollar tek ekranda (resmi değildir)", "A launcher styled after the PS5 home screen; games, emulators and shortcuts on one screen (unofficial)")),
+        ("Claude Code Skills", None, ("Kodlama ajanları için skill derlemesi: planlama, hata ayıklama, ön yüz ve BT denetimi", "A skill set for coding agents: planning, debugging, front end and IT audit")),
+        ("TV Ekran Geçiş", None, ("Uykuya geçen televizyonu ekran düzeninden çıkarıp aynı konumla geri ekler; TV\'yi EDID bilgisinden tanır", "Takes a sleeping TV out of the display layout and puts it back in place; finds the TV by its EDID")),
     ],
     "all": ("Tümünü gör", "See all"),
     "table_h": ("Tüm projeler", "All projects"),
@@ -421,6 +423,9 @@ _HOW = {
 for _p in PROJ["items"]:
     if isinstance(_p["name"], str) and _p["name"] in _HOW and not _p.get("how"):
         _p["how"] = _HOW[_p["name"]]
+
+V3["mem"] = {"notes": ("Notlar", "Notes"), "embed": ("MiniLM · Gemma", "MiniLM · Gemma"), "store": ("ChromaDB", "ChromaDB"), "hnsw": ("HNSW arama", "HNSW search"), "agents": ("Ajanlar", "Agents"), "mcp": ("MCP ile bağlam", "context over MCP"), "cap": ("Notlar vektöre çevrilip ChromaDB\'de saklanır, ajanlar ihtiyaç duyduğu bağlamı MCP üzerinden geri çağırır.", "Notes are embedded and stored in ChromaDB; agents recall the context they need over MCP.")}
+V3["portrait"] = ("Kutay Kılıç\'ın portresi", "Portrait of Kutay Kılıç")
 
 V3["ask"] = {
     "q": ("Bu bağlantı e-posta uygulamanı açar. Devam edilsin mi?", "This link opens your email app. Go ahead?"),
