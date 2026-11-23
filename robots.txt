@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kutaykilicai.github.io/Kutay-portfolio.github.io/sitemap.xml
