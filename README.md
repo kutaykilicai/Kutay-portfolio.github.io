@@ -3,7 +3,7 @@
 Kişisel portfolyo sitem. GitHub Pages üzerinde yayında:
 https://kutaykilicai.github.io/Kutay-portfolio.github.io/
 
-![Sitenin giriş bölümü](docs/ekran-goruntusu.webp)
+![Sitenin giriş bölümü](docs/ekran-goruntusu-v32.webp)
 
 ## Yapı
 
@@ -28,7 +28,7 @@ Tasarım kararları (renkler, yazı, bölümler) `DESIGN.md` içinde. Önceki s�
 
 ## Kaynaklar
 
-- Yazı tipi: cihazın sistem yazı tipi (Segoe UI Variable, SF Pro). Bulunmadığında `fonts/` klasöründeki Inter kullanılır; Inter SIL Open Font License 1.1 ile lisanslıdır.
+- Yazı tipleri: başlıklarda Newsreader, metinde Inter. İkisi de `fonts/` klasöründe sitenin kendi sunucusundan yüklenir, dışarıdan font servisi kullanılmaz; ikisi de SIL Open Font License 1.1 ile lisanslıdır (`fonts/OFL.txt`, `fonts/OFL-newsreader.txt`).
 - Proje ekran görüntüleri kendi depolarımdan alındı: agac-boyutu, bolmeler, robokopya, hizli-indir, kuti-dock ve vault-breach.
 - GSAP 3.15 ve ScrollTrigger: GreenSock standart lisansı (ücretsiz, https://gsap.com/standard-license). Lenis 1.3: MIT, lisans metni `vendor/LICENSE-lenis.txt`.
 - Logo: KK monogramı (`favicon.svg`, `img/logo-kk.svg`), bu site için çizildi.
